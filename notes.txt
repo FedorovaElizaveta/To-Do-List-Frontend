@@ -1,0 +1,25 @@
+Vite setup:
+    1. npm create vite@latest.
+    2. To create the app in the current project, use a dot (.) when they ask you the project name.
+
+Project:
+    1. In App.js, routes are set up. 
+        - Use <Suspense></Suspense> to show the fallback message or a component. 
+        - <Routes></Routes> wraps all the routes.
+        - Single <Route path="/..." element={<.../>} />for a single route. 
+        - Double <Route></Route> is used to wrap dependent routes.
+
+npm install:
+    * react-router-dom
+
+
+Project Structure:
+- Home page:
+    - Add list btn
+    - Find by name field (update each letter)
+    - List of tasks
+        - Single task (short): pencil icon, name, delete icon
+
+- List page
+    - Task 
+    - By clicking on a task, you can edit it
