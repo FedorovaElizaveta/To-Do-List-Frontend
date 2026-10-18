@@ -1,0 +1,11 @@
+.mainTitle {
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 500px;
+}
