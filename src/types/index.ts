@@ -13,7 +13,7 @@ export interface List {
   title: string;
   createdAt: string;
   updatedAt: string;
-  iconColor: string;
+  listColor: string;
 
   tasks: Task[];
 }

@@ -18,7 +18,7 @@ export const useListStore = create<ListStore>((set) => ({
 
       const lists = data.map((list: List) => ({
         ...list,
-        iconColor: color.PURPLE,
+        listColor: color.PURPLE,
       }));
 
       set({ lists, loading: false });

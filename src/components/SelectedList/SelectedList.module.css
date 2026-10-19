@@ -1,0 +1,47 @@
+.listWrapper {
+  padding: 20px 15px 0 15px;
+}
+
+.listTitle {
+  font-size: 35px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.taskTotal {
+  font-size: 35px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.titleNTotalWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.taskList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.red {
+  color: #eb5545;
+}
+.orange {
+  color: #f2a33c;
+}
+.yellow {
+  color: #f8d84a;
+}
+.green {
+  color: #68ce69;
+}
+.blue {
+  color: #3b82f7;
+}
+.purple {
+  color: #5e5cde;
+}

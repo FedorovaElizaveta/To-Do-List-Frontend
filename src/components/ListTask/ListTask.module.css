@@ -1,0 +1,10 @@
+.task {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.taskText {
+  color: #fff;
+  font-weight: 400;
+}

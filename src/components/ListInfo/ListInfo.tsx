@@ -19,7 +19,7 @@ const ListInfo = (data: { list: List }) => {
       }}
     >
       <div className={styles.iconTitleWrapper}>
-        <div className={clsx(styles.iconWrapper, styles[list.iconColor])}>
+        <div className={clsx(styles.iconWrapper, styles[list.listColor])}>
           <img src={listImg} alt="list icon" width={25} />
         </div>
         <p className={clsx(styles.listTitle, isSelected && styles.selected)}>

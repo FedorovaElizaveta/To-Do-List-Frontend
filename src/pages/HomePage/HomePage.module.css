@@ -8,7 +8,7 @@
 
 .myListsWrapper {
   position: relative;
-  margin: 8px;
+  margin: 8px 0 8px 8px;
   background-color: #141414;
   border: #363639 1px solid;
   border-radius: 18px;
