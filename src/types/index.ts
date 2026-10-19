@@ -1,9 +1,11 @@
-export interface State {
-  lists: List[] | null;
+export interface ListStore {
+  lists: List[] | [];
+  selectedListId: string | null;
   loading: boolean;
   error: string | null;
 
   getLists(): void;
+  setSelectedListId(id: string): void;
 }
 
 export interface List {
@@ -11,6 +13,7 @@ export interface List {
   title: string;
   createdAt: string;
   updatedAt: string;
+  iconColor: string;
 
   tasks: Task[];
 }

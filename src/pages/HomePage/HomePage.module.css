@@ -1,0 +1,15 @@
+.pageWrapper {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 400px auto;
+
+  background-color: #1e1e1e;
+}
+
+.myListsWrapper {
+  position: relative;
+  margin: 8px;
+  background-color: #141414;
+  border: #363639 1px solid;
+  border-radius: 18px;
+}

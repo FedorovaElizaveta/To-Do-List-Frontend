@@ -1,0 +1,20 @@
+.addListBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #0a84ff;
+
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: background-color 0.3s ease;
+}
+
+.addListBtn:hover {
+  background-color: #0a49ff;
+}

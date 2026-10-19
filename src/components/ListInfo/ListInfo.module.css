@@ -1,0 +1,62 @@
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-radius: 15px;
+  padding: 5px 10px 5px 10px;
+
+  cursor: pointer;
+
+  transition: background-color 0.3s ease;
+}
+
+.task:hover {
+  background-color: #232323;
+}
+
+.iconTitleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.iconWrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.listTitle {
+  color: #fff;
+}
+
+.taskTotal {
+  color: #585958;
+}
+
+.selected {
+  color: #0a84ff;
+}
+
+.red {
+  background-color: #eb5545;
+}
+.orange {
+  background-color: #f2a33c;
+}
+.yellow {
+  background-color: #f8d84a;
+}
+.green {
+  background-color: #68ce69;
+}
+.blue {
+  background-color: #3b82f7;
+}
+.purple {
+  background-color: #5e5cde;
+}

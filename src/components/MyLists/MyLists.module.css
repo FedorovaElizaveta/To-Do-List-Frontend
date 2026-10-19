@@ -1,11 +1,13 @@
 .mainTitle {
   font-weight: 600;
-  margin-bottom: 30px;
+  font-size: 25px;
+  margin: 15px 20px;
+  color: #585958;
 }
 
 .list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 500px;
+  gap: 5px;
+  padding: 10px;
 }
