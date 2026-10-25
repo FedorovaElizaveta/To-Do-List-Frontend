@@ -11,6 +11,7 @@ export interface ListStore {
     id: string,
     listInfo: { title?: string; themeColor?: string },
   ): void;
+  deleteList(id: string): void;
 }
 
 export interface List {

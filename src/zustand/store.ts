@@ -55,4 +55,12 @@ export const useListStore = create<ListStore>((set) => ({
       set({ error, loading: false });
     }
   },
+  deleteList: async (id) => {
+    await axios.delete(`/lists/${id}`);
+
+    const response = await axios("/lists");
+    const data = response.data.data;
+
+    set({ lists: data, loading: false });
+  },
 }));

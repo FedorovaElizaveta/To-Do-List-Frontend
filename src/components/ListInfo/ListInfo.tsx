@@ -5,25 +5,20 @@ import clsx from "clsx";
 import { useListStore } from "../../zustand/store.ts";
 import { useState } from "react";
 import Modal from "../Modal/Modal.tsx";
+import infoIcon from "../../images/info-icon.png";
 import pencilIcon from "../../images/pencil-icon.png";
+import deletelIcon from "../../images/delete-icon.png";
 import { useSearchParams } from "react-router-dom";
 
 const ListInfo = (data: { list: List }) => {
   const { list } = data;
   const setSelectedListId = useListStore((state) => state.setSelectedListId);
   const selectedListId = useListStore((state) => state.selectedListId);
+  const deleteList = useListStore((state) => state.deleteList);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
   const isSelected = list.id === selectedListId;
-
-  function handleClick(event: React.SyntheticEvent) {
-    event.preventDefault();
-
-    setSearchParams({ listId: list.id });
-
-    handleOpen();
-  }
 
   const [open, setOpen] = useState(false);
 
@@ -32,6 +27,7 @@ const ListInfo = (data: { list: List }) => {
   };
 
   const handleOpen = () => {
+    setSearchParams({ listId: list.id });
     setOpen(true);
   };
 
@@ -54,13 +50,22 @@ const ListInfo = (data: { list: List }) => {
       <div className={styles.totalNBtnWrapper}>
         <p className={styles.taskTotal}>{list.tasks?.length}</p>
 
-        <button
-          type="button"
-          onClick={handleClick}
-          className={styles.updateBtn}
-        >
-          <img src={pencilIcon} alt="pencil icon" width={20} />
-        </button>
+        <div className={styles.dropdown}>
+          <button type="button" className={styles.dropbtn}>
+            <img src={infoIcon} alt="info icon" width={20} />
+          </button>
+
+          <div className={styles.dropdownContent}>
+            <button type="button" onClick={handleOpen}>
+              <img src={pencilIcon} alt="change list" width={15} />
+              <p>Rename</p>
+            </button>
+            <button type="button" onClick={() => deleteList(list.id)}>
+              <img src={deletelIcon} alt="delete list" width={13} />
+              <p>Delete</p>
+            </button>
+          </div>
+        </div>
       </div>
 
       <Modal isOpen={open} onClose={handleClose} action="updateList" />

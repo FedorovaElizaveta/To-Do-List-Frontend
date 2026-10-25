@@ -14,15 +14,19 @@ const Modal = (data: Modal) => {
   const { isOpen, onClose, action } = data;
   const createList = useListStore((state) => state.createList);
   const updateList = useListStore((state) => state.updateList);
-
   const [searchParams, setSearchParams] = useSearchParams();
   const listId = searchParams.get("listId");
+  const list = useListStore((state) => state.lists).find(
+    (list) => list.id === listId,
+  );
 
   function manageData(event: React.SyntheticEvent) {
     event.preventDefault();
 
     const title: string = event.target["listTitle"].value.trim();
-    const themeColor: string = event.target["color"].value;
+    const color: string = event.target["color"].value;
+
+    const themeColor = color ? color : list ? list.themeColor : "blue";
 
     if (action === "addList") {
       if (!title) {
@@ -63,13 +67,7 @@ const Modal = (data: Modal) => {
             <input type="radio" name="color" id="orange" value="orange" />
             <input type="radio" name="color" id="yellow" value="yellow" />
             <input type="radio" name="color" id="green" value="green" />
-            <input
-              type="radio"
-              name="color"
-              id="blue"
-              value="blue"
-              defaultChecked
-            />
+            <input type="radio" name="color" id="blue" value="blue" />
             <input type="radio" name="color" id="purple" value="purple" />
           </div>
 
