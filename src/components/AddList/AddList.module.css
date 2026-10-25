@@ -2,11 +2,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #0a84ff;
-
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
+  background-color: transparent;
 
   display: flex;
   align-items: center;
@@ -16,5 +12,5 @@
 }
 
 .addListBtn:hover {
-  background-color: #0a49ff;
+  background-color: #282828;
 }

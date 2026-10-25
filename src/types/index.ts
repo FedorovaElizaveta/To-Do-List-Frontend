@@ -6,14 +6,19 @@ export interface ListStore {
 
   getLists(): void;
   setSelectedListId(id: string): void;
+  createList(listInfo: { title: string; themeColor: string }): void;
+  updateList(
+    id: string,
+    listInfo: { title?: string; themeColor?: string },
+  ): void;
 }
 
 export interface List {
   id: string;
   title: string;
+  themeColor: string;
   createdAt: string;
   updatedAt: string;
-  listColor: string;
 
   tasks: Task[];
 }

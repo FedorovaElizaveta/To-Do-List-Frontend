@@ -13,10 +13,10 @@ const SelectedList = () => {
       {list ? (
         <div>
           <div className={styles.titleNTotalWrapper}>
-            <h1 className={clsx(styles.listTitle, styles[list.listColor])}>
+            <h1 className={clsx(styles.listTitle, styles[list.themeColor])}>
               {list.title}
             </h1>
-            <p className={clsx(styles.taskTotal, styles[list.listColor])}>
+            <p className={clsx(styles.taskTotal, styles[list.themeColor])}>
               {list.tasks.length}
             </p>
           </div>

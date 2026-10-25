@@ -5,6 +5,7 @@
 .modalWrapper {
   position: absolute;
   top: 0;
+  left: 0;
 
   display: flex;
   justify-content: center;
@@ -23,4 +24,23 @@
   background-color: #1e1e1e;
   border: #4a4a4a 1px solid;
   border-radius: 30px;
+}
+
+.red {
+  background-color: #eb5545;
+}
+.orange {
+  background-color: #f2a33c;
+}
+.yellow {
+  background-color: #f8d84a;
+}
+.green {
+  background-color: #68ce69;
+}
+.blue {
+  background-color: #3b82f7;
+}
+.purple {
+  background-color: #5e5cde;
 }

@@ -1,7 +1,6 @@
 import axios from "axios";
 import { create } from "zustand";
-import { color } from "../types/listColors.ts";
-import type { List, ListStore } from "../types/index.ts";
+import type { ListStore } from "../types/index.ts";
 
 axios.defaults.baseURL = "http://localhost:5108";
 
@@ -13,15 +12,10 @@ export const useListStore = create<ListStore>((set) => ({
   getLists: async () => {
     set({ loading: true, error: null });
     try {
-      const respose = await axios("/lists");
-      const data = respose.data.data;
+      const response = await axios("/lists");
+      const data = response.data.data;
 
-      const lists = data.map((list: List) => ({
-        ...list,
-        listColor: color.PURPLE,
-      }));
-
-      set({ lists, loading: false });
+      set({ lists: data, loading: false });
     } catch (error) {
       set({ error: error.message, loading: false });
     }
@@ -33,6 +27,32 @@ export const useListStore = create<ListStore>((set) => ({
       set({ loading: false });
     } catch (error) {
       set({ error: error.message, loading: false });
+    }
+  },
+  createList: async (listInfo) => {
+    set({ loading: true, error: null });
+    try {
+      await axios.post("/lists", listInfo);
+
+      const response = await axios("/lists");
+      const data = response.data.data;
+
+      set({ lists: data, loading: false });
+    } catch (error) {
+      set({ error, loading: false });
+    }
+  },
+  updateList: async (id, listInfo) => {
+    set({ loading: true, error: null });
+    try {
+      await axios.put(`/lists/${id}`, listInfo);
+
+      const response = await axios("/lists");
+      const data = response.data.data;
+
+      set({ lists: data, loading: false });
+    } catch (error) {
+      set({ error, loading: false });
     }
   },
 }));
