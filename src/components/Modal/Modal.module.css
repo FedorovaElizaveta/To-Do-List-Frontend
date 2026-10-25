@@ -12,6 +12,7 @@
   align-items: center;
 
   background-color: rgba(0, 0, 0, 0.5);
+  color: #dddddd;
   width: 100vw;
   height: 100vh;
 
@@ -19,11 +20,76 @@
 }
 
 .modal {
-  width: 450px;
-  height: 280px;
+  position: relative;
+  width: 430px;
+  height: 230px;
+  padding: 20px;
   background-color: #1e1e1e;
   border: #4a4a4a 1px solid;
   border-radius: 30px;
+}
+
+.modalTitle {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.nameInputWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.nameInputWrapper input {
+  height: 20px;
+  background-color: transparent;
+  border: #4a4a4a 1px solid;
+  border-radius: 5px;
+}
+
+.radioWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.radioWrapper div {
+  width: 25px;
+  height: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+}
+
+.radioWrapper div input {
+  margin: 0;
+}
+
+.btnsWrapper {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.btnsWrapper button {
+  font-family: inherit;
+  color: #dddddd;
+  width: 70px;
+  height: 30px;
+  background-color: #2f2f2f;
+  border-radius: 10px;
+
+  transition: background-color 0.3s ease;
+}
+
+.btnsWrapper button:hover {
+  background-color: #232323;
 }
 
 .red {
