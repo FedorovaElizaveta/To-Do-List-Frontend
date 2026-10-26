@@ -2,6 +2,7 @@ import styles from "./Modal.module.css";
 import clsx from "clsx";
 import { useListStore } from "../../zustand/store.ts";
 import { useSearchParams } from "react-router-dom";
+import type { SubmitEvent } from "react";
 
 interface Modal {
   isOpen: boolean;
@@ -20,7 +21,7 @@ const Modal = (data: Modal) => {
     (list) => list.id === listId,
   );
 
-  function manageData(event) {
+  function manageData(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const title: string = event.target["listTitle"].value.trim();
@@ -30,20 +31,14 @@ const Modal = (data: Modal) => {
 
     switch (action) {
       case "addList": {
-        if (!title) {
-          console.error("Title is not provided");
-          return;
-        }
+        if (!title) throw new Error("Title is not provided");
 
         const listInfo = { title, themeColor };
         createList(listInfo);
         break;
       }
       case "updateList": {
-        if (!listId) {
-          console.error("List ID is not found");
-          return;
-        }
+        if (!listId) throw new Error("List ID is not found");
 
         const listInfo: { title?: string; themeColor: string } = { themeColor };
 

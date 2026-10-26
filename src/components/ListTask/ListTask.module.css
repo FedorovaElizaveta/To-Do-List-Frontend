@@ -4,7 +4,66 @@
   gap: 20px;
 }
 
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.inputWrapper input {
+  margin: 0;
+}
+
 .taskText {
   color: #fff;
   font-weight: 400;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: transparent;
+}
+
+.dropdownContent {
+  display: none;
+  position: fixed;
+
+  background-color: #141414;
+  border: #5c5c5c 1px solid;
+  border-radius: 15px;
+  padding: 10px;
+
+  min-width: 100px;
+  z-index: 1;
+}
+
+.dropdownContent button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
+
+  color: #e4e4e4;
+  background-color: transparent;
+  border-radius: 10px;
+
+  transition: background-color 0.3s ease;
+}
+
+.dropdownContent button:hover {
+  background-color: #2f62b3;
+}
+
+.dropdown:hover .dropdownContent {
+  display: block;
+}
+
+.selected {
+  color: #0a84ff;
 }

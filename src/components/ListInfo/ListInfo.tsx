@@ -12,13 +12,12 @@ import { useSearchParams } from "react-router-dom";
 
 const ListInfo = (data: { list: List }) => {
   const { list } = data;
-  const setSelectedListId = useListStore((state) => state.setSelectedListId);
-  const selectedListId = useListStore((state) => state.selectedListId);
   const deleteList = useListStore((state) => state.deleteList);
 
   const [searchParams, setSearchParams] = useSearchParams();
+  const listId = searchParams.get("listId");
 
-  const isSelected = list.id === selectedListId;
+  const isSelected = list.id === listId;
 
   const [open, setOpen] = useState(false);
 
@@ -35,7 +34,7 @@ const ListInfo = (data: { list: List }) => {
     <li
       className={styles.task}
       onClick={() => {
-        setSelectedListId(list.id);
+        setSearchParams({ listId: list.id });
       }}
     >
       <div className={styles.iconTitleWrapper}>

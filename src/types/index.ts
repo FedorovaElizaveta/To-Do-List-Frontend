@@ -5,7 +5,6 @@ export interface ListStore {
   error: string | null;
 
   getLists(): void;
-  setSelectedListId(id: string): void;
   createList(listInfo: { title: string; themeColor: string }): void;
   updateList(
     id: string,
@@ -14,8 +13,12 @@ export interface ListStore {
   deleteList(id: string): void;
 
   addTask(listId: string, text: string): void;
-  updateTask(listId: string, text: string): void;
-  deleteTask(id: string): void;
+  updateTask(
+    id: string,
+    listId: string,
+    payload: { text?: string; completed?: boolean },
+  ): void;
+  deleteTask(id: string, listId: string): void;
 }
 
 export interface List {

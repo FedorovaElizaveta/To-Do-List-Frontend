@@ -1,35 +1,31 @@
 import clsx from "clsx";
 import styles from "./TaskModal.module.css";
 import { useListStore } from "../../zustand/store.ts";
-import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import type { SubmitEvent } from "react";
 
 interface Modal {
   isOpen: boolean;
   onClose(): void;
-
   action: "addTask" | "updateTask";
+  taskId?: string;
 }
 
 const TaskModal = (data: Modal) => {
   const { isOpen, onClose, action } = data;
   const addTask = useListStore((state) => state.addTask);
   const updateTask = useListStore((state) => state.updateTask);
-  const listId = useListStore((state) => state.selectedListId);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const listId = searchParams.get("listId");
 
-  function manageTask(event) {
+  function manageTask(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const text = event.target["text"].value;
 
-    if (!text) {
-      console.error("Text is not provided");
-      return;
-    }
+    if (!text) throw new Error("Text is not provided");
 
-    if (!listId) {
-      console.error("List ID is not provided");
-      return;
-    }
+    if (!listId) throw new Error("List ID is not provided");
 
     switch (action) {
       case "addTask": {
@@ -37,7 +33,8 @@ const TaskModal = (data: Modal) => {
         break;
       }
       case "updateTask": {
-        updateTask(listId, text);
+        if (!data.taskId) throw new Error("Task ID is not provided");
+        updateTask(data.taskId, listId, { text });
         break;
       }
     }

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { create } from "zustand";
-import type { ListStore } from "../types/index.ts";
+import type { List, ListStore, Task } from "../types/index.ts";
 
 axios.defaults.baseURL = "http://localhost:5108";
 
@@ -9,6 +9,7 @@ export const useListStore = create<ListStore>((set) => ({
   selectedListId: null,
   loading: false,
   error: null,
+
   getLists: async () => {
     set({ loading: true, error: null });
     try {
@@ -16,77 +17,131 @@ export const useListStore = create<ListStore>((set) => ({
       const data = response.data.data;
 
       set({ lists: data, loading: false });
-    } catch (error) {
-      set({ error: error.message, loading: false });
-    }
-  },
-  setSelectedListId: (id) => {
-    set({ loading: true, error: null });
-    try {
-      set({ selectedListId: id });
-      set({ loading: false });
-    } catch (error) {
-      set({ error: error.message, loading: false });
+    } catch (error: unknown) {
+      set({
+        error: error instanceof Error ? error.message : String(error),
+        loading: false,
+      });
     }
   },
   createList: async (listInfo) => {
     set({ loading: true, error: null });
     try {
-      await axios.post("/lists", listInfo);
+      const response = await axios.post("/lists", listInfo);
+      const newList: List = response.data.data;
 
-      const response = await axios("/lists");
-      const data = response.data.data;
-
-      set({ lists: data, loading: false });
-    } catch (error) {
-      set({ error, loading: false });
+      set((state) => ({
+        lists: [...state.lists, newList],
+        loading: false,
+      }));
+    } catch (error: unknown) {
+      set({
+        error: error instanceof Error ? error.message : String(error),
+        loading: false,
+      });
     }
   },
   updateList: async (id, listInfo) => {
     set({ loading: true, error: null });
     try {
-      await axios.put(`/lists/${id}`, listInfo);
+      const response = await axios.put(`/lists/${id}`, listInfo);
 
-      const response = await axios("/lists");
-      const data = response.data.data;
+      const updatedList: List = response.data.data;
 
-      set({ lists: data, loading: false });
-    } catch (error) {
-      set({ error, loading: false });
+      set((state) => ({
+        lists: state.lists.map((list) => (list.id === id ? updatedList : list)),
+        loading: false,
+      }));
+    } catch (error: unknown) {
+      set({
+        error: error instanceof Error ? error.message : String(error),
+        loading: false,
+      });
     }
   },
   deleteList: async (id) => {
-    await axios.delete(`/lists/${id}`);
+    set({ loading: true, error: null });
+    try {
+      await axios.delete(`/lists/${id}`);
 
-    const response = await axios("/lists");
-    const data = response.data.data;
-
-    set({ lists: data, loading: false });
+      set((state) => ({
+        lists: state.lists.filter((list) => {
+          return list.id !== id;
+        }),
+        loading: false,
+      }));
+    } catch (error: unknown) {
+      set({
+        error: error instanceof Error ? error.message : String(error),
+        loading: false,
+      });
+    }
   },
+
   addTask: async (listId, text) => {
     set({ loading: true, error: null });
     try {
-      await axios.post("/task", { listId, text });
-      set({ loading: false });
-    } catch (error) {
-      set({ error, loading: false });
+      const response = await axios.post("/task", { listId, text });
+      const task: Task = response.data.data;
+
+      set((state) => ({
+        lists: state.lists.map((list) =>
+          list.id === listId ? { ...list, tasks: [...list.tasks, task] } : list,
+        ),
+        loading: false,
+      }));
+    } catch (error: unknown) {
+      set({
+        error: error instanceof Error ? error.message : String(error),
+        loading: false,
+      });
     }
   },
-  updateTask: async (listId, text) => {
+  updateTask: async (id, listId, taskInfo) => {
     set({ loading: true, error: null });
     try {
-      await axios.put(`/task`, { listId, text });
-      set({ loading: false });
-    } catch (error) {
-      set({ error, loading: false });
+      console.log(id, taskInfo);
+      const response = await axios.put(`/task/${id}`, taskInfo);
+      const updatedTask: Task = response.data.data;
+
+      set((state) => ({
+        lists: state.lists.map((list) =>
+          list.id === listId
+            ? {
+                ...list,
+                tasks: list.tasks.map((task) =>
+                  task.id === id ? updatedTask : task,
+                ),
+              }
+            : list,
+        ),
+        loading: false,
+      }));
+    } catch (error: unknown) {
+      set({
+        error: error instanceof Error ? error.message : String(error),
+        loading: false,
+      });
     }
   },
-  deleteTask: async (id) => {
+  deleteTask: async (id, listId) => {
     set({ loading: true, error: null });
     try {
-      set({ loading: false });
-    } catch (error) {
-      set({ error, loading: false });
+      await axios.delete(`/task/${id}`);
+
+      set((state) => ({
+        lists: state.lists.map((list) =>
+          list.id === listId
+            ? { ...list, tasks: list.tasks.filter((task) => task.id !== id) }
+            : list,
+        ),
+        loading: false,
+      }));
+    } catch (error: unknown) {
+      set({
+        error: error instanceof Error ? error.message : String(error),
+        loading: false,
+      });
     }
   },
 }));

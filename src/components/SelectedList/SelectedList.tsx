@@ -3,11 +3,13 @@ import { useListStore } from "../../zustand/store.ts";
 import clsx from "clsx";
 import ListTask from "../ListTask/ListTask.tsx";
 import AddTask from "../AddTask/AddTask.tsx";
+import { useSearchParams } from "react-router-dom";
 
 const SelectedList = () => {
   const lists = useListStore((state) => state.lists);
-  const selectedListId = useListStore((state) => state.selectedListId);
-  const list = lists.find((list) => list.id === selectedListId);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const listId = searchParams.get("listId");
+  const list = lists.find((list) => list.id === listId);
 
   return (
     <div className={styles.listWrapper}>
