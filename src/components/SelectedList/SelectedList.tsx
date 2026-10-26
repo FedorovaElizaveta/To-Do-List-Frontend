@@ -2,6 +2,7 @@ import styles from "./SelectedList.module.css";
 import { useListStore } from "../../zustand/store.ts";
 import clsx from "clsx";
 import ListTask from "../ListTask/ListTask.tsx";
+import AddTask from "../AddTask/AddTask.tsx";
 
 const SelectedList = () => {
   const lists = useListStore((state) => state.lists);
@@ -29,6 +30,8 @@ const SelectedList = () => {
           ) : (
             <p>No Reminders</p>
           )}
+
+          <AddTask list={list} />
         </div>
       ) : (
         <p className={styles.listTitle}>Select List</p>

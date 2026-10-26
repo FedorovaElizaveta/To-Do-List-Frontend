@@ -1,0 +1,37 @@
+.redBackground {
+  background-color: #eb5545;
+}
+.orangeBackground {
+  background-color: #f2a33c;
+}
+.yellowBackground {
+  background-color: #f8d84a;
+}
+.greenBackground {
+  background-color: #68ce69;
+}
+.blueBackground {
+  background-color: #3b82f7;
+}
+.purpleBackground {
+  background-color: #5e5cde;
+}
+
+.redColor {
+  color: #eb5545;
+}
+.orangeColor {
+  color: #f2a33c;
+}
+.yellowColor {
+  color: #f8d84a;
+}
+.greenColor {
+  color: #68ce69;
+}
+.blueColor {
+  color: #3b82f7;
+}
+.purpleColor {
+  color: #5e5cde;
+}

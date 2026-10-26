@@ -20,7 +20,7 @@ const Modal = (data: Modal) => {
     (list) => list.id === listId,
   );
 
-  function manageData(event: React.SyntheticEvent) {
+  function manageData(event) {
     event.preventDefault();
 
     const title: string = event.target["listTitle"].value.trim();

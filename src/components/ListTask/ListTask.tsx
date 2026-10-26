@@ -6,7 +6,7 @@ const ListTask = (data: { task: Task }) => {
 
   return (
     <li className={styles.task}>
-      <input type="checkbox" id={task.id} />
+      <input type="checkbox" id={task.id} checked={task.completed} />
       <label className={styles.taskText} htmlFor={task.id}>
         {task.text}
       </label>

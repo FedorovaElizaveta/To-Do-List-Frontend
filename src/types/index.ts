@@ -12,6 +12,10 @@ export interface ListStore {
     listInfo: { title?: string; themeColor?: string },
   ): void;
   deleteList(id: string): void;
+
+  addTask(listId: string, text: string): void;
+  updateTask(listId: string, text: string): void;
+  deleteTask(id: string): void;
 }
 
 export interface List {
@@ -28,4 +32,5 @@ export interface Task {
   id: string;
   listId: string;
   text: string;
+  completed: boolean;
 }

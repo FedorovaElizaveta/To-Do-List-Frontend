@@ -63,4 +63,30 @@ export const useListStore = create<ListStore>((set) => ({
 
     set({ lists: data, loading: false });
   },
+  addTask: async (listId, text) => {
+    set({ loading: true, error: null });
+    try {
+      await axios.post("/task", { listId, text });
+      set({ loading: false });
+    } catch (error) {
+      set({ error, loading: false });
+    }
+  },
+  updateTask: async (listId, text) => {
+    set({ loading: true, error: null });
+    try {
+      await axios.put(`/task`, { listId, text });
+      set({ loading: false });
+    } catch (error) {
+      set({ error, loading: false });
+    }
+  },
+  deleteTask: async (id) => {
+    set({ loading: true, error: null });
+    try {
+      set({ loading: false });
+    } catch (error) {
+      set({ error, loading: false });
+    }
+  },
 }));
