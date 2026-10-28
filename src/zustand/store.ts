@@ -100,7 +100,6 @@ export const useListStore = create<ListStore>((set) => ({
   updateTask: async (id, listId, taskInfo) => {
     set({ loading: true, error: null });
     try {
-      console.log(id, taskInfo);
       const response = await axios.put(`/task/${id}`, taskInfo);
       const updatedTask: Task = response.data.data;
 

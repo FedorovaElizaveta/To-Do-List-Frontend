@@ -21,7 +21,7 @@ const Modal = (data: Modal) => {
     (list) => list.id === listId,
   );
 
-  function manageData(event: SubmitEvent<HTMLFormElement>) {
+  const manageData = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const title: string = event.target["listTitle"].value.trim();
@@ -52,7 +52,7 @@ const Modal = (data: Modal) => {
 
     event.target.reset();
     onClose();
-  }
+  };
 
   return (
     <div className={clsx(!isOpen ? styles.disable : styles.modalWrapper)}>

@@ -18,7 +18,7 @@ const TaskModal = (data: Modal) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const listId = searchParams.get("listId");
 
-  function manageTask(event: SubmitEvent<HTMLFormElement>) {
+  const manageTask = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const text = event.target["text"].value;
@@ -41,7 +41,7 @@ const TaskModal = (data: Modal) => {
 
     event.target.reset();
     onClose();
-  }
+  };
 
   return (
     <div className={clsx(isOpen ? styles.modalWrapper : styles.disable)}>

@@ -5,20 +5,21 @@ import pencilIcon from "../../images/pencil-icon.png";
 import deletelIcon from "../../images/delete-icon.png";
 import { useListStore } from "../../zustand/store";
 import { useSearchParams } from "react-router-dom";
-import { useState } from "react";
+import { useState, type ChangeEvent } from "react";
 import TaskModal from "../TaskModal/TaskModal.tsx";
 
 const ListTask = (data: { task: Task }) => {
   const { task } = data;
   const deleteTask = useListStore((state) => state.deleteTask);
+  const updateTask = useListStore((state) => state.updateTask);
   const [searchParams, setSearchParams] = useSearchParams();
   const listId = searchParams.get("listId");
 
-  function manageDelete() {
+  const manageDelete = () => {
     if (!listId) throw new Error("List ID is not provided");
 
     deleteTask(task.id, listId);
-  }
+  };
 
   const [open, setOpen] = useState(false);
 
@@ -28,6 +29,14 @@ const ListTask = (data: { task: Task }) => {
 
   const handleOpen = () => {
     setOpen(true);
+  };
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+
+    if (!listId) throw new Error("List ID is not provided");
+
+    updateTask(task.id, listId, { completed: !task.completed });
   };
 
   return (
@@ -50,7 +59,12 @@ const ListTask = (data: { task: Task }) => {
       </div>
 
       <div className={styles.inputWrapper}>
-        <input type="checkbox" id={task.id} />
+        <input
+          type="checkbox"
+          id="taskStatus"
+          checked={task.completed}
+          onChange={handleChange}
+        />
         <label className={styles.taskText} htmlFor={task.id}>
           {task.text}
         </label>
