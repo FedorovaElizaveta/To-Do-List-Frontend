@@ -1,6 +1,5 @@
 export interface ListStore {
   lists: List[] | [];
-  selectedListId: string | null;
   loading: boolean;
   error: string | null;
 

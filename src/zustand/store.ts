@@ -6,7 +6,6 @@ axios.defaults.baseURL = "http://localhost:5108";
 
 export const useListStore = create<ListStore>((set) => ({
   lists: [],
-  selectedListId: null,
   loading: false,
   error: null,
 
