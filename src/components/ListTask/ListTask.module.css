@@ -5,14 +5,31 @@
 }
 
 .inputWrapper {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  cursor: pointer;
+}
+
+.inputWrapper div {
+  width: 20px;
+  height: 20px;
+  border: solid 1px #585958;
+  border-radius: 50%;
 }
 
 .inputWrapper input {
-  margin: 0;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.inputWrapper input:checked .inputWrapper.div {
+  background-color: #0a84ff;
 }
 
 .taskText {

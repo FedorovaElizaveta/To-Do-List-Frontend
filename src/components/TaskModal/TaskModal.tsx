@@ -2,7 +2,7 @@ import clsx from "clsx";
 import styles from "./TaskModal.module.css";
 import { useListStore } from "../../zustand/store.ts";
 import { useSearchParams } from "react-router-dom";
-import type { SubmitEvent } from "react";
+import { type SubmitEvent } from "react";
 
 interface Modal {
   isOpen: boolean;
@@ -49,7 +49,7 @@ const TaskModal = (data: Modal) => {
         <h2 className={styles.header}>
           {action === "addTask" ? "New Task" : "Change Text"}
         </h2>
-        <form onSubmit={manageTask}>
+        <form onSubmit={manageTask} id="myForm">
           <textarea
             id="text"
             name="text"

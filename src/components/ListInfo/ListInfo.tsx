@@ -4,11 +4,12 @@ import type { List } from "../../types";
 import clsx from "clsx";
 import { useListStore } from "../../zustand/store.ts";
 import { useState } from "react";
-import Modal from "../Modal/Modal.tsx";
 import infoIcon from "../../images/info-icon.png";
 import pencilIcon from "../../images/pencil-icon.png";
 import deletelIcon from "../../images/delete-icon.png";
 import { useSearchParams } from "react-router-dom";
+import Modal from "../Modal/Modal.tsx";
+import ListModalWindow from "../ListModalWindow/ListModalWindow.tsx";
 
 const ListInfo = (data: { list: List }) => {
   const { list } = data;
@@ -67,7 +68,13 @@ const ListInfo = (data: { list: List }) => {
         </div>
       </div>
 
-      <Modal isOpen={open} onClose={handleClose} action="updateList" />
+      <Modal isOpen={open} cancelFn={handleClose}>
+        <ListModalWindow
+          cancelFn={handleClose}
+          listName={list.title}
+          action="updateList"
+        />
+      </Modal>
     </li>
   );
 };

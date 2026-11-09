@@ -1,0 +1,120 @@
+.disable {
+  display: none;
+}
+
+.modalWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #dddddd;
+  width: 100vw;
+  height: 100vh;
+
+  z-index: 999;
+}
+
+.modal {
+  position: relative;
+  width: 430px;
+  height: 230px;
+  padding: 20px;
+  background-color: #1e1e1e;
+  border: #4a4a4a 1px solid;
+  border-radius: 30px;
+}
+
+.modalTitle {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.nameInputWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.nameInputWrapper input {
+  height: 20px;
+  color: #dddddd;
+  background-color: transparent;
+  border: #4a4a4a 1px solid;
+  border-radius: 5px;
+
+  padding-left: 5px;
+}
+
+.radioWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.radioWrapper div {
+  width: 25px;
+  height: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+}
+
+.radioWrapper div input {
+  margin: 0;
+}
+
+.formControls {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.formControls button {
+  font-family: inherit;
+  color: #dddddd;
+  width: 70px;
+  height: 30px;
+  background-color: #2f2f2f;
+  border-radius: 10px;
+
+  transition: background-color 0.3s ease;
+}
+
+.formControls button:hover {
+  background-color: #232323;
+}
+
+.formControls button:disabled {
+  color: #5d5d5d;
+  background-color: #262626;
+}
+
+.red {
+  background-color: #eb5545;
+}
+.orange {
+  background-color: #f2a33c;
+}
+.yellow {
+  background-color: #f8d84a;
+}
+.green {
+  background-color: #68ce69;
+}
+.blue {
+  background-color: #3b82f7;
+}
+.purple {
+  background-color: #5e5cde;
+}

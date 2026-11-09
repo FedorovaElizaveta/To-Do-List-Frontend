@@ -59,6 +59,7 @@ const ListTask = (data: { task: Task }) => {
       </div>
 
       <div className={styles.inputWrapper}>
+        <div></div>
         <input
           type="checkbox"
           id="taskStatus"
