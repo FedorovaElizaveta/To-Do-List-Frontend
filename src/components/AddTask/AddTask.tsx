@@ -6,9 +6,11 @@ import Modal from "../Modal/Modal.tsx";
 import TaskModalWindow from "../TaskModalWindow/TaskModalWindow.tsx";
 import { useState } from "react";
 
-const AddTask = (data: { list: List }) => {
-  const { list } = data;
+interface Props {
+  list: List;
+}
 
+const AddTask = ({ list }: Props) => {
   const [open, setOpen] = useState(false);
 
   const handleClose = () => {

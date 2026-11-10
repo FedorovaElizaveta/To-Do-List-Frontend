@@ -11,8 +11,11 @@ import { useSearchParams } from "react-router-dom";
 import Modal from "../Modal/Modal.tsx";
 import ListModalWindow from "../ListModalWindow/ListModalWindow.tsx";
 
-const ListInfo = (data: { list: List }) => {
-  const { list } = data;
+interface Props {
+  list: List;
+}
+
+const ListInfo = ({ list }: Props) => {
   const deleteList = useListStore((state) => state.deleteList);
 
   const [searchParams, setSearchParams] = useSearchParams();
