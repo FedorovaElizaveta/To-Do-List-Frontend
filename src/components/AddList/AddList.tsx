@@ -20,6 +20,7 @@ const AddList = () => {
       <button type="button" className={styles.addListBtn} onClick={handleOpen}>
         <img src={plusIcon} alt="add list icon" width={20} />
       </button>
+
       <Modal isOpen={open} cancelFn={handleClose}>
         <ListModalWindow cancelFn={handleClose} action="addList" />
       </Modal>

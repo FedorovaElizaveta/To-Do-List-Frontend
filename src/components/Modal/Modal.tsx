@@ -12,8 +12,8 @@ const Modal: React.FC<Props> = (props) => {
   const { isOpen, cancelFn, children } = props;
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isOpen) {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && isOpen) {
         if (cancelFn) {
           cancelFn();
         }

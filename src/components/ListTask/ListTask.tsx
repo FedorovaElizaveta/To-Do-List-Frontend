@@ -6,13 +6,17 @@ import deletelIcon from "../../images/delete-icon.png";
 import { useListStore } from "../../zustand/store";
 import { useSearchParams } from "react-router-dom";
 import { useState, type ChangeEvent } from "react";
-import TaskModal from "../TaskModal/TaskModal.tsx";
+import Modal from "../Modal/Modal.tsx";
+import TaskModalWindow from "../TaskModalWindow/TaskModalWindow.tsx";
 
-const ListTask = (data: { task: Task }) => {
-  const { task } = data;
+interface Props {
+  task: Task;
+}
+
+const ListTask = ({ task }: Props) => {
   const deleteTask = useListStore((state) => state.deleteTask);
   const updateTask = useListStore((state) => state.updateTask);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const listId = searchParams.get("listId");
 
   const manageDelete = () => {
@@ -71,12 +75,14 @@ const ListTask = (data: { task: Task }) => {
         </label>
       </div>
 
-      <TaskModal
-        isOpen={open}
-        onClose={handleClose}
-        action="updateTask"
-        taskId={task.id}
-      />
+      <Modal isOpen={open} cancelFn={handleClose}>
+        <TaskModalWindow
+          cancelFn={handleClose}
+          action="updateTask"
+          taskId={task.id}
+          taskText={task.text}
+        />
+      </Modal>
     </li>
   );
 };

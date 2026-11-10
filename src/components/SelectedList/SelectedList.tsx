@@ -7,7 +7,7 @@ import { useSearchParams } from "react-router-dom";
 
 const SelectedList = () => {
   const lists = useListStore((state) => state.lists);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const listId = searchParams.get("listId");
   const list = lists.find((list) => list.id === listId);
 

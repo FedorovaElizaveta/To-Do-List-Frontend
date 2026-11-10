@@ -2,7 +2,8 @@ import styles from "./AddTask.module.css";
 import plusIcon from "../../images/plus-icon.png";
 import type { List } from "../../types";
 import clsx from "clsx";
-import TaskModal from "../TaskModal/TaskModal.tsx";
+import Modal from "../Modal/Modal.tsx";
+import TaskModalWindow from "../TaskModalWindow/TaskModalWindow.tsx";
 import { useState } from "react";
 
 const AddTask = (data: { list: List }) => {
@@ -27,7 +28,9 @@ const AddTask = (data: { list: List }) => {
         <img src={plusIcon} alt="add task icon" width={25} />
       </button>
 
-      <TaskModal isOpen={open} onClose={handleClose} action="addTask" />
+      <Modal isOpen={open} cancelFn={handleClose}>
+        <TaskModalWindow cancelFn={handleClose} action="addTask" />
+      </Modal>
     </div>
   );
 };

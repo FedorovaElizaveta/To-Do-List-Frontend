@@ -13,7 +13,7 @@ const ListModalWindow: React.FC<Props> = (props) => {
   const { cancelFn, listName, action } = props;
   const createList = useListStore((state) => state.createList);
   const updateList = useListStore((state) => state.updateList);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const listId = searchParams.get("listId");
   const list = useListStore((state) => state.lists).find(
     (list) => list.id === listId,
