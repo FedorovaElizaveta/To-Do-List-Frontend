@@ -40,6 +40,8 @@ const ListTask = ({ task }: Props) => {
 
     if (!listId) throw new Error("List ID is not provided");
 
+    console.log("click");
+
     updateTask(task.id, listId, { completed: !task.completed });
   };
 
@@ -62,17 +64,14 @@ const ListTask = ({ task }: Props) => {
         </div>
       </div>
 
-      <div className={styles.inputWrapper}>
-        <div></div>
+      <div className={styles.checkboxWrapper}>
         <input
           type="checkbox"
-          id="taskStatus"
+          id={task.id}
           checked={task.completed}
           onChange={handleChange}
         />
-        <label className={styles.taskText} htmlFor={task.id}>
-          {task.text}
-        </label>
+        <label htmlFor={task.id}>{task.text}</label>
       </div>
 
       <Modal isOpen={open} cancelFn={handleClose}>

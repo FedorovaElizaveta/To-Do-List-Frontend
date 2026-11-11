@@ -4,37 +4,56 @@
   gap: 20px;
 }
 
-.inputWrapper {
-  position: relative;
+.checkboxWrapper {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
+}
+
+.checkboxWrapper input {
   cursor: pointer;
-}
-
-.inputWrapper div {
-  width: 20px;
-  height: 20px;
-  border: solid 1px #585958;
-  border-radius: 50%;
-}
-
-.inputWrapper input {
   position: absolute;
   opacity: 0;
+}
+
+.checkboxWrapper label {
+  position: relative;
+  padding-left: 30px;
   cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-.inputWrapper input:checked .inputWrapper.div {
-  background-color: #0a84ff;
-}
-
-.taskText {
   color: #fff;
   font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.checkboxWrapper label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1em;
+  height: 1em;
+  border: 1px solid #585958;
+  border-radius: 50%;
+  transition: border 0.3s ease;
+}
+
+.checkboxWrapper input:checked + label {
+  color: #9b9c9c;
+}
+
+.checkboxWrapper input:checked + label::before {
+  border: 1px solid #9b9c9c;
+}
+
+.checkboxWrapper input:checked + label::after {
+  content: "";
+  position: absolute;
+  top: calc(0.5em + 1px);
+  left: calc(0.5em + 1px);
+  width: 0.75em;
+  height: 0.75em;
+  background-color: #9b9c9c;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .dropdown {
