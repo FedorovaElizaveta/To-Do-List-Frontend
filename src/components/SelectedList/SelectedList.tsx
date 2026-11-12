@@ -1,3 +1,4 @@
+import "../../App.css";
 import styles from "./SelectedList.module.css";
 import { useListStore } from "../../zustand/store.ts";
 import clsx from "clsx";
@@ -16,10 +17,10 @@ const SelectedList = () => {
       {list ? (
         <div>
           <div className={styles.titleNTotalWrapper}>
-            <h1 className={clsx(styles.listTitle, styles[list.themeColor])}>
+            <h1 className={clsx(styles.listTitle, `${[list.themeColor]}Color`)}>
               {list.title}
             </h1>
-            <p className={clsx(styles.taskTotal, styles[list.themeColor])}>
+            <p className={clsx(styles.taskTotal, `${[list.themeColor]}Color`)}>
               {list.tasks.length}
             </p>
           </div>

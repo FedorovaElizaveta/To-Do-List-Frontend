@@ -27,22 +27,3 @@
   flex-direction: column;
   gap: 15px;
 }
-
-.red {
-  color: #eb5545;
-}
-.orange {
-  color: #f2a33c;
-}
-.yellow {
-  color: #f8d84a;
-}
-.green {
-  color: #68ce69;
-}
-.blue {
-  color: #3b82f7;
-}
-.purple {
-  color: #5e5cde;
-}

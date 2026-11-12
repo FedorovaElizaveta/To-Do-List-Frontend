@@ -1,3 +1,4 @@
+import "../../App.css";
 import styles from "./ListInfo.module.css";
 import listImg from "../../images/list.png";
 import type { List } from "../../types";
@@ -42,7 +43,9 @@ const ListInfo = ({ list }: Props) => {
       }}
     >
       <div className={styles.iconTitleWrapper}>
-        <div className={clsx(styles.iconWrapper, styles[list.themeColor])}>
+        <div
+          className={clsx(styles.iconWrapper, `${[list.themeColor]}Background`)}
+        >
           <img src={listImg} alt="list icon" width={25} />
         </div>
         <p className={clsx(styles.listTitle, isSelected && styles.selected)}>

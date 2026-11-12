@@ -1,3 +1,4 @@
+import "../../App.css";
 import styles from "./AddTask.module.css";
 import plusIcon from "../../images/plus-icon.png";
 import type { List } from "../../types";
@@ -24,7 +25,7 @@ const AddTask = ({ list }: Props) => {
   return (
     <div>
       <button
-        className={clsx(styles.addTaskBtn, styles[list.themeColor])}
+        className={clsx(styles.addTaskBtn, `${[list.themeColor]}Background`)}
         onClick={handleOpen}
       >
         <img src={plusIcon} alt="add task icon" width={25} />

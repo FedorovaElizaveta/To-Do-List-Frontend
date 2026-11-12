@@ -1,3 +1,4 @@
+import "../../App.css";
 import styles from "./ListModalWindow.module.css";
 import { useListStore } from "../../zustand/store.ts";
 import { useSearchParams } from "react-router-dom";
@@ -66,27 +67,27 @@ const ListModalWindow: React.FC<Props> = (props) => {
 
         <div className={styles.radioWrapper}>
           <p>Colour:</p>
-          <div className={styles.red}>
+          <div className="redBackground">
             <input type="radio" name="color" id="red" value="red" />
           </div>
 
-          <div className={styles.yellow}>
+          <div className="orangeBackground">
             <input type="radio" name="color" id="orange" value="orange" />
           </div>
 
-          <div className={styles.orange}>
+          <div className="yellowBackground">
             <input type="radio" name="color" id="yellow" value="yellow" />
           </div>
 
-          <div className={styles.green}>
+          <div className="greenBackground">
             <input type="radio" name="color" id="green" value="green" />
           </div>
 
-          <div className={styles.blue}>
+          <div className="blueBackground">
             <input type="radio" name="color" id="blue" value="blue" />
           </div>
 
-          <div className={styles.purple}>
+          <div className="purpleBackground">
             <input type="radio" name="color" id="purple" value="purple" />
           </div>
         </div>

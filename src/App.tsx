@@ -1,5 +1,4 @@
 import { lazy, Suspense, useEffect } from "react";
-import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { useListStore } from "./zustand/store.ts";
 
