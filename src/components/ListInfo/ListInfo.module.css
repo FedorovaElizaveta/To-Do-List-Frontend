@@ -85,6 +85,10 @@
 
 .taskTotal {
   color: #585958;
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
 }
 
 .selected {

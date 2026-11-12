@@ -7,7 +7,7 @@ const ToDoLists = () => {
   const lists = useListStore((state) => state.lists);
 
   return (
-    <div>
+    <div className={styles.myListsWrapper}>
       <div className={styles.titleNBtnWrapper}>
         <h2 className={styles.mainTitle}>My Lists</h2>
         <AddList />

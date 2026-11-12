@@ -40,8 +40,6 @@ const ListTask = ({ task }: Props) => {
 
     if (!listId) throw new Error("List ID is not provided");
 
-    console.log("click");
-
     updateTask(task.id, listId, { completed: !task.completed });
   };
 

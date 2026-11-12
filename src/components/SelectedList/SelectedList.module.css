@@ -1,18 +1,17 @@
 .listWrapper {
   position: relative;
-  padding: 20px 15px 0 15px;
+  padding: 20px 15px 20px 15px;
+  overflow: auto;
 }
 
 .listTitle {
   font-size: 35px;
   font-weight: 600;
-  color: #fff;
 }
 
 .taskTotal {
   font-size: 35px;
   font-weight: 500;
-  color: #fff;
 }
 
 .titleNTotalWrapper {

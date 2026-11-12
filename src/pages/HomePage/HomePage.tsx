@@ -5,9 +5,7 @@ import SelectedList from "../../components/SelectedList/SelectedList.js";
 const HomePage = () => {
   return (
     <div className={styles.pageWrapper}>
-      <div className={styles.myListsWrapper}>
-        <MyLists />
-      </div>
+      <MyLists />
 
       <SelectedList />
     </div>
