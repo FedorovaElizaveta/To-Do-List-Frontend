@@ -56,8 +56,22 @@ const ListModalWindow: React.FC<Props> = (props) => {
   return (
     <div className={styles.modal}>
       <h2 className={styles.modalTitle}>
-        {action === "addList" ? "New List" : `"${listName}" Info`}
+        {action === "addList" ? (
+          "New List"
+        ) : (
+          <>
+            "<div className={styles.listName}>{listName}</div>" Info
+          </>
+        )}
       </h2>
+
+      {/* {action === "addList" ? (
+        <h2 className={styles.modalTitle}>New List</h2>
+      ) : (
+        <h2 className={styles.modalTitle}>
+          <span className={styles.listName}>{listName}</span> Info
+        </h2>
+      )} */}
 
       <form onSubmit={manageData}>
         <div className={styles.nameInputWrapper}>

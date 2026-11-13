@@ -37,12 +37,12 @@ const ListInfo = ({ list }: Props) => {
 
   return (
     <li
-      className={styles.task}
+      className={styles.todoList}
       onClick={() => {
         setSearchParams({ listId: list.id });
       }}
     >
-      <div className={styles.iconTitleWrapper}>
+      <div className={styles.iconNTitleWrapper}>
         <div
           className={clsx(styles.iconWrapper, `${[list.themeColor]}Background`)}
         >
