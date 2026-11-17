@@ -3,14 +3,22 @@ import styles from "./SelectedList.module.css";
 import { useListStore } from "../../zustand/store.ts";
 import clsx from "clsx";
 import ListTask from "../ListTask/ListTask.tsx";
-import AddTask from "../AddTask/AddTask.tsx";
 import { useSearchParams } from "react-router-dom";
+import plusIcon from "../../images/plus-icon.png";
+import AddTask from "../AddTask/AddTask.tsx";
+import { useState } from "react";
 
 const SelectedList = () => {
   const lists = useListStore((state) => state.lists);
   const [searchParams] = useSearchParams();
   const listId = searchParams.get("listId");
   const list = lists.find((list) => list.id === listId);
+
+  const [isAdding, setIsAdding] = useState(false);
+
+  function closeInput() {
+    setIsAdding(false);
+  }
 
   return (
     <div className={styles.listWrapper}>
@@ -29,12 +37,21 @@ const SelectedList = () => {
               {list.tasks.map((task) => (
                 <ListTask task={task} key={task.id} />
               ))}
+              {isAdding && <AddTask closeInput={closeInput} />}
             </ul>
           ) : (
             <p>No Reminders</p>
           )}
 
-          <AddTask list={list} />
+          <button
+            className={clsx(
+              styles.addTaskBtn,
+              `${[list.themeColor]}Background`,
+            )}
+            onClick={() => setIsAdding(true)}
+          >
+            <img src={plusIcon} alt="add task icon" width={25} />
+          </button>
         </div>
       ) : (
         <p className={styles.listTitle}>Select List</p>

@@ -12,7 +12,6 @@ interface Props {
 
 const TaskModal: React.FC<Props> = (props) => {
   const { cancelFn, action, taskId, taskText } = props;
-  const addTask = useListStore((state) => state.addTask);
   const updateTask = useListStore((state) => state.updateTask);
   const [searchParams] = useSearchParams();
   const listId = searchParams.get("listId");
@@ -26,17 +25,9 @@ const TaskModal: React.FC<Props> = (props) => {
 
     if (!listId) throw new Error("List ID is not provided");
 
-    switch (action) {
-      case "addTask": {
-        addTask(listId, text);
-        break;
-      }
-      case "updateTask": {
-        if (!taskId) throw new Error("Task ID is not provided");
-        updateTask(taskId, listId, { text });
-        break;
-      }
-    }
+    if (!taskId) throw new Error("Task ID is not provided");
+
+    updateTask(taskId, listId, { text });
 
     event.target.reset();
     cancelFn();

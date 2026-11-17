@@ -1,39 +1,42 @@
-import "../../App.css";
+import { useSearchParams } from "react-router-dom";
 import styles from "./AddTask.module.css";
-import plusIcon from "../../images/plus-icon.png";
-import type { List } from "../../types";
-import clsx from "clsx";
-import Modal from "../Modal/Modal.tsx";
-import TaskModalWindow from "../TaskModalWindow/TaskModalWindow.tsx";
-import { useState } from "react";
+import { useRef, useEffect, type FocusEvent } from "react";
+import { useListStore } from "../../zustand/store";
 
-interface Props {
-  list: List;
+interface Prop {
+  closeInput(): void;
 }
 
-const AddTask = ({ list }: Props) => {
-  const [open, setOpen] = useState(false);
+const AddTask = ({ closeInput }: Prop) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const addTask = useListStore((state) => state.addTask);
+  const [searchParams] = useSearchParams();
+  const listId = searchParams.get("listId");
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  useEffect((): void => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
+  function handleBlur(event: FocusEvent<HTMLInputElement>) {
+    const userInput = event.target.value;
+
+    if (!userInput.trim()) {
+      closeInput();
+      return;
+    }
+
+    if (!listId) throw new Error("List ID is not provided");
+
+    addTask(listId, userInput);
+
+    closeInput();
+  }
 
   return (
-    <div>
-      <button
-        className={clsx(styles.addTaskBtn, `${[list.themeColor]}Background`)}
-        onClick={handleOpen}
-      >
-        <img src={plusIcon} alt="add task icon" width={25} />
-      </button>
-
-      <Modal isOpen={open} cancelFn={handleClose}>
-        <TaskModalWindow cancelFn={handleClose} action="addTask" />
-      </Modal>
+    <div className={styles.checkboxWrapper}>
+      <input type="text" ref={inputRef} name="newTask" onBlur={handleBlur} />
     </div>
   );
 };

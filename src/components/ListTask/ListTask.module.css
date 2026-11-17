@@ -1,6 +1,5 @@
 .task {
   display: flex;
-  /* align-items: center; */
   gap: 20px;
 }
 
@@ -18,7 +17,6 @@
 .checkboxWrapper label {
   position: relative;
   padding-left: 30px;
-  cursor: pointer;
   transition: color 0.3s ease;
 
   display: inline-block;
