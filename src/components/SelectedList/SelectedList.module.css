@@ -27,11 +27,6 @@
   margin-bottom: 30px;
 }
 
-.taskList {
-  display: flex;
-  flex-direction: column;
-}
-
 .noRemindersMsg {
   color: #555555;
   font-size: 25px;

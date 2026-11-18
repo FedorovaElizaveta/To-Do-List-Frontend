@@ -1,4 +1,27 @@
-.checkboxWrapper label::before {
+.textInputWrapper {
+  position: relative;
+  min-height: 35px;
+  padding-left: 30px;
+}
+
+.textInputWrapper input {
+  color: #fff;
+  font-family: inherit;
+  font-size: inherit;
+  min-width: 100px;
+  height: 100%;
+  padding: 3px;
+
+  border: none;
+  border-bottom: 1px #555555 solid;
+  background-color: transparent;
+  outline: none;
+  caret-color: #3478f6;
+
+  text-wrap: wrap;
+}
+
+.textInputWrapper::before {
   content: "";
   position: absolute;
   left: 0;

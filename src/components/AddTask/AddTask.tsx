@@ -1,5 +1,5 @@
-import { useSearchParams } from "react-router-dom";
 import styles from "./AddTask.module.css";
+import { useSearchParams } from "react-router-dom";
 import { useRef, useEffect, type FocusEvent } from "react";
 import { useListStore } from "../../zustand/store";
 
@@ -23,7 +23,7 @@ const AddTask = ({ closeInput }: Prop) => {
     const userInput = event.target.value;
 
     if (!userInput.trim()) {
-      closeInput();
+      // closeInput();
       return;
     }
 
@@ -35,9 +35,9 @@ const AddTask = ({ closeInput }: Prop) => {
   }
 
   return (
-    <div className={styles.checkboxWrapper}>
+    <li className={styles.textInputWrapper}>
       <input type="text" ref={inputRef} name="newTask" onBlur={handleBlur} />
-    </div>
+    </li>
   );
 };
 
