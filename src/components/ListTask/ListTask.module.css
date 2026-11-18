@@ -1,6 +1,7 @@
 .task {
   display: flex;
   gap: 20px;
+  min-height: 35px;
 }
 
 .checkboxWrapper {

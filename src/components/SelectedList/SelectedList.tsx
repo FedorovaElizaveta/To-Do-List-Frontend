@@ -40,7 +40,13 @@ const SelectedList = () => {
               {isAdding && <AddTask closeInput={closeInput} />}
             </ul>
           ) : (
-            <p>No Reminders</p>
+            <div>
+              {isAdding ? (
+                <AddTask closeInput={closeInput} />
+              ) : (
+                <p className={styles.noRemindersMsg}>No Reminders</p>
+              )}
+            </div>
           )}
 
           <button

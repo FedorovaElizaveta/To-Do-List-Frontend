@@ -30,7 +30,12 @@
 .taskList {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+}
+
+.noRemindersMsg {
+  color: #555555;
+  font-size: 25px;
+  text-align: center;
 }
 
 .addTaskBtn {
