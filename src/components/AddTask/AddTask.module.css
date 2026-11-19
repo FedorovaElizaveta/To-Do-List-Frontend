@@ -1,34 +1,36 @@
 .textInputWrapper {
   position: relative;
-  min-height: 35px;
-  padding-left: 30px;
+  height: 35px;
 }
 
 .textInputWrapper input {
+  display: inline-block;
+  box-sizing: border-box;
+
   color: #fff;
   font-family: inherit;
   font-size: inherit;
   min-width: 100px;
   height: 100%;
   padding: 3px;
+  margin-left: 30px;
 
   border: none;
   border-bottom: 1px #555555 solid;
   background-color: transparent;
   outline: none;
   caret-color: #3478f6;
-
-  text-wrap: wrap;
 }
 
 .textInputWrapper::before {
   content: "";
   position: absolute;
   left: 0;
-  top: 0;
+  top: 50%;
   width: 1em;
   height: 1em;
   border: 1px solid #585958;
   border-radius: 50%;
   transition: border 0.3s ease;
+  transform: translateY(-50%);
 }

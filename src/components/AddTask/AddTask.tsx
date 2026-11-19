@@ -23,7 +23,7 @@ const AddTask = ({ closeInput }: Prop) => {
     const userInput = event.target.value;
 
     if (!userInput.trim()) {
-      // closeInput();
+      closeInput();
       return;
     }
 
