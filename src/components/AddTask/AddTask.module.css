@@ -1,11 +1,56 @@
-.textInputWrapper {
+.manageTaskLi {
   display: flex;
   align-items: center;
   position: relative;
   height: 35px;
 }
 
-.textInputWrapper input {
+.taskStatus {
+  cursor: pointer;
+  position: absolute;
+  opacity: 0;
+}
+
+.taskStatus + label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 1em;
+  height: 1em;
+  border: 1px solid #585958;
+  border-radius: 50%;
+  transition: border 0.3s ease;
+  transform: translateY(-50%);
+}
+
+.taskStatus:checked + label + .taskText {
+  color: #9b9c9c;
+}
+
+.taskStatus:checked + label::before {
+  border: 1px solid #9b9c9c;
+}
+
+.taskStatus + label::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: calc(0.5em + 1px);
+  width: 0.75em;
+  height: 0.75em;
+  background-color: #9b9c9c;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.taskStatus:checked + label::after {
+  background-color: #9b9c9c;
+}
+
+.taskText {
   box-sizing: border-box;
 
   color: #fff;
@@ -21,17 +66,4 @@
   background-color: transparent;
   outline: none;
   caret-color: #3478f6;
-}
-
-.textInputWrapper::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 1em;
-  height: 1em;
-  border: 1px solid #585958;
-  border-radius: 50%;
-  transition: border 0.3s ease;
-  transform: translateY(-50%);
 }

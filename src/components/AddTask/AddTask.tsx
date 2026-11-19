@@ -35,8 +35,22 @@ const AddTask = ({ closeInput }: Prop) => {
   }
 
   return (
-    <li className={styles.textInputWrapper}>
-      <input type="text" ref={inputRef} name="newTask" onBlur={handleBlur} />
+    <li className={styles.manageTaskLi}>
+      <input
+        type="checkbox"
+        id="manageTask"
+        className={styles.taskStatus}
+        // checked={task.completed}
+      />
+      <label htmlFor="manageTask"></label>
+
+      <input
+        type="text"
+        ref={inputRef}
+        name="newTask"
+        onBlur={handleBlur}
+        className={styles.taskText}
+      />
     </li>
   );
 };

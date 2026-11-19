@@ -47,7 +47,7 @@
   border: 1px solid #9b9c9c;
 }
 
-.checkboxWrapper input:checked + label::after {
+.checkboxWrapper label::after {
   content: "";
   position: absolute;
   top: 0;
@@ -57,6 +57,12 @@
   background-color: #9b9c9c;
   border-radius: 50%;
   transform: translate(-50%, -50%);
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.checkboxWrapper input:checked + label::after {
+  background-color: #9b9c9c;
 }
 
 .dropdown {
