@@ -69,7 +69,9 @@ const ListTask = ({ task }: Props) => {
           checked={task.completed}
           onChange={handleChange}
         />
-        <label htmlFor={task.id}>{task.text}</label>
+        <label htmlFor={task.id}></label>
+
+        <p>{task.text}</p>
       </div>
 
       <Modal isOpen={open} cancelFn={handleClose}>
