@@ -1,15 +1,19 @@
-import styles from "./AddTask.module.css";
+import styles from "./ManageTask.module.css";
 import { useSearchParams } from "react-router-dom";
 import { useRef, useEffect, type FocusEvent } from "react";
 import { useListStore } from "../../zustand/store";
+import type { Task } from "../../types";
 
 interface Prop {
-  closeInput(): void;
+  cancelInput(): void;
+  action: "addTask" | "updateTask";
+  task?: Task;
 }
 
-const AddTask = ({ closeInput }: Prop) => {
+const ManageTask = ({ cancelInput, action, task }: Prop) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const addTask = useListStore((state) => state.addTask);
+  const updateTask = useListStore((state) => state.updateTask);
   const [searchParams] = useSearchParams();
   const listId = searchParams.get("listId");
 
@@ -23,15 +27,28 @@ const AddTask = ({ closeInput }: Prop) => {
     const userInput = event.target.value;
 
     if (!userInput.trim()) {
-      closeInput();
+      cancelInput();
       return;
     }
 
     if (!listId) throw new Error("List ID is not provided");
+    if (!userInput) throw new Error("Text is not provided");
 
-    addTask(listId, userInput);
+    switch (action) {
+      case "addTask":
+        addTask(listId, { text: userInput });
+        break;
+      case "updateTask":
+        if (!task?.id) throw new Error("Task ID is not provided");
 
-    closeInput();
+        updateTask(task.id, listId, { text: userInput });
+        break;
+
+      default:
+        throw new Error("Invalid operation");
+    }
+
+    cancelInput();
   }
 
   return (
@@ -40,7 +57,8 @@ const AddTask = ({ closeInput }: Prop) => {
         type="checkbox"
         id="manageTask"
         className={styles.taskStatus}
-        // checked={task.completed}
+        checked={task && task.completed}
+        readOnly
       />
       <label htmlFor="manageTask"></label>
 
@@ -50,9 +68,10 @@ const AddTask = ({ closeInput }: Prop) => {
         name="newTask"
         onBlur={handleBlur}
         className={styles.taskText}
+        defaultValue={task?.text && task.text}
       />
     </li>
   );
 };
 
-export default AddTask;
+export default ManageTask;

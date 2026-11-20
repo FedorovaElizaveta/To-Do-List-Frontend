@@ -5,7 +5,7 @@ import clsx from "clsx";
 import ListTask from "../ListTask/ListTask.tsx";
 import { useSearchParams } from "react-router-dom";
 import plusIcon from "../../images/plus-icon.png";
-import AddTask from "../AddTask/AddTask.tsx";
+import ManageTask from "../ManageTask/ManageTask.tsx";
 import { useState } from "react";
 
 const SelectedList = () => {
@@ -37,12 +37,14 @@ const SelectedList = () => {
               {list.tasks.map((task) => (
                 <ListTask task={task} key={task.id} />
               ))}
-              {isAdding && <AddTask closeInput={closeInput} />}
+              {isAdding && (
+                <ManageTask cancelInput={closeInput} action="addTask" />
+              )}
             </ul>
           ) : (
             <ul>
               {isAdding ? (
-                <AddTask closeInput={closeInput} />
+                <ManageTask cancelInput={closeInput} action="addTask" />
               ) : (
                 <li className={styles.noRemindersMsg}>No Reminders</li>
               )}

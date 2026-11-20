@@ -77,10 +77,10 @@ export const useListStore = create<ListStore>((set) => ({
     }
   },
 
-  addTask: async (listId, text) => {
+  addTask: async (listId, taskInfo) => {
     set({ loading: true, error: null });
     try {
-      const response = await axios.post("/task", { listId, text });
+      const response = await axios.post("/task", { listId, ...taskInfo });
       const task: Task = response.data.data;
 
       set((state) => ({

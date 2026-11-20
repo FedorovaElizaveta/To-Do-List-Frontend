@@ -11,7 +11,10 @@ export interface ListStore {
   ): void;
   deleteList(id: string): void;
 
-  addTask(listId: string, text: string): void;
+  addTask(
+    listId: string,
+    payload: { text?: string; completed?: boolean },
+  ): void;
   updateTask(
     id: string,
     listId: string,

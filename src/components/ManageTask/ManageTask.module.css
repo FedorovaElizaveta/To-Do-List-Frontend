@@ -58,11 +58,11 @@
   font-size: inherit;
   min-width: 100px;
   height: 80%;
-  padding: 3px;
+  padding: 3px 0 3px 0;
   margin-left: 30px;
 
   border: none;
-  border-bottom: 1px #555555 solid;
+  box-shadow: #555 0px 1px;
   background-color: transparent;
   outline: none;
   caret-color: #3478f6;
