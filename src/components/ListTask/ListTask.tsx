@@ -2,7 +2,7 @@ import styles from "./ListTask.module.css";
 import type { Task } from "../../types";
 import { useListStore } from "../../zustand/store";
 import { useSearchParams } from "react-router-dom";
-import { useState, type ChangeEvent } from "react";
+import { useState, type ChangeEvent, type MouseEvent } from "react";
 import ManageTask from "../ManageTask/ManageTask.tsx";
 
 interface Props {
@@ -10,16 +10,10 @@ interface Props {
 }
 
 const ListTask = ({ task }: Props) => {
-  // const deleteTask = useListStore((state) => state.deleteTask);
   const updateTask = useListStore((state) => state.updateTask);
+  const deleteTask = useListStore((state) => state.deleteTask);
   const [searchParams] = useSearchParams();
   const listId = searchParams.get("listId");
-
-  // const handleDelete = () => {
-  //   if (!listId) throw new Error("List ID is not provided");
-
-  //   deleteTask(task.id, listId);
-  // };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -39,10 +33,18 @@ const ListTask = ({ task }: Props) => {
     setIsAdding(false);
   }
 
+  function handleContextMenu(event: MouseEvent<HTMLElement>) {
+    event.preventDefault();
+
+    if (!listId) throw new Error("List ID is not provided");
+
+    deleteTask(task.id, listId);
+  }
+
   return (
     <>
       {!isAdding ? (
-        <li className={styles.task}>
+        <li className={styles.task} onContextMenu={handleContextMenu}>
           <div className={styles.checkboxWrapper}>
             <input
               type="checkbox"

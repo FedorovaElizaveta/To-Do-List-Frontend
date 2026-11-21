@@ -14,6 +14,7 @@ const ManageTask = ({ cancelInput, action, task }: Prop) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const addTask = useListStore((state) => state.addTask);
   const updateTask = useListStore((state) => state.updateTask);
+  const deleteTask = useListStore((state) => state.deleteTask);
   const [searchParams] = useSearchParams();
   const listId = searchParams.get("listId");
 
@@ -26,20 +27,21 @@ const ManageTask = ({ cancelInput, action, task }: Prop) => {
   function handleBlur(event: FocusEvent<HTMLInputElement>) {
     const userInput = event.target.value;
 
-    if (!userInput.trim()) {
-      cancelInput();
-      return;
-    }
-
     if (!listId) throw new Error("List ID is not provided");
-    if (!userInput) throw new Error("Text is not provided");
 
     switch (action) {
       case "addTask":
+        if (!userInput.trim()) {
+          cancelInput();
+          return;
+        }
+
         addTask(listId, { text: userInput });
         break;
       case "updateTask":
         if (!task?.id) throw new Error("Task ID is not provided");
+
+        if (!userInput) deleteTask(task.id, listId);
 
         updateTask(task.id, listId, { text: userInput });
         break;
