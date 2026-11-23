@@ -1,4 +1,6 @@
 .listWrapper {
+  display: grid;
+  grid-template-rows: 73px auto;
   position: relative;
   padding: 20px 15px 20px 15px;
   overflow: auto;

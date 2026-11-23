@@ -4,6 +4,7 @@ import { useListStore } from "../../zustand/store";
 import { useSearchParams } from "react-router-dom";
 import { useState, type ChangeEvent, type MouseEvent } from "react";
 import ManageTask from "../ManageTask/ManageTask.tsx";
+import ContextMenu from "../ContextMenu/ContextMenu.tsx";
 
 interface Props {
   task: Task;
@@ -12,9 +13,17 @@ interface Props {
 
 const ListTask = ({ task, themeColor }: Props) => {
   const updateTask = useListStore((state) => state.updateTask);
-  const deleteTask = useListStore((state) => state.deleteTask);
+  // const deleteTask = useListStore((state) => state.deleteTask);
   const [searchParams] = useSearchParams();
   const listId = searchParams.get("listId");
+
+  const initialContextMenu = {
+    show: false,
+    x: 0,
+    y: 0,
+  };
+
+  const [contextMenu, setContextMenu] = useState(initialContextMenu);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -37,9 +46,12 @@ const ListTask = ({ task, themeColor }: Props) => {
   function handleContextMenu(event: MouseEvent<HTMLElement>) {
     event.preventDefault();
 
-    if (!listId) throw new Error("List ID is not provided");
+    const { pageX, pageY } = event;
+    setContextMenu({ show: true, x: pageX, y: pageY });
 
-    deleteTask(task.id, listId);
+    // if (!listId) throw new Error("List ID is not provided");
+
+    // deleteTask(task.id, listId);
   }
 
   return (
@@ -67,6 +79,8 @@ const ListTask = ({ task, themeColor }: Props) => {
           themeColor={themeColor}
         />
       )}
+
+      {contextMenu.show && <ContextMenu x={contextMenu.x} y={contextMenu.y} />}
     </>
   );
 };

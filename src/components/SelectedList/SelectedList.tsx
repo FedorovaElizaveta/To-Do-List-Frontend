@@ -1,4 +1,3 @@
-import "../../App.css";
 import styles from "./SelectedList.module.css";
 import { useListStore } from "../../zustand/store.ts";
 import clsx from "clsx";
@@ -13,7 +12,6 @@ const SelectedList = () => {
   const [searchParams] = useSearchParams();
   const listId = searchParams.get("listId");
   const list = lists.find((list) => list.id === listId);
-
   const [isAdding, setIsAdding] = useState(false);
 
   function closeInput() {
@@ -23,7 +21,7 @@ const SelectedList = () => {
   return (
     <div className={styles.listWrapper}>
       {list ? (
-        <div>
+        <>
           <div className={styles.titleNTotalWrapper}>
             <h1 className={clsx(styles.listTitle, `${[list.themeColor]}Color`)}>
               {list.title}
@@ -33,7 +31,7 @@ const SelectedList = () => {
             </p>
           </div>
           {list.tasks.length !== 0 ? (
-            <ul className={styles.taskList}>
+            <ul>
               {list.tasks.map((task) => (
                 <ListTask
                   task={task}
@@ -72,7 +70,7 @@ const SelectedList = () => {
           >
             <img src={plusIcon} alt="add task icon" width={25} />
           </button>
-        </div>
+        </>
       ) : (
         <p className={styles.listTitle}>Select List</p>
       )}
