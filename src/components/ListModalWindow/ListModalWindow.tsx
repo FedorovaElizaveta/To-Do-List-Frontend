@@ -65,45 +65,68 @@ const ListModalWindow: React.FC<Props> = (props) => {
         )}
       </h2>
 
-      {/* {action === "addList" ? (
-        <h2 className={styles.modalTitle}>New List</h2>
-      ) : (
-        <h2 className={styles.modalTitle}>
-          <span className={styles.listName}>{listName}</span> Info
-        </h2>
-      )} */}
-
       <form onSubmit={manageData}>
         <div className={styles.nameInputWrapper}>
           <label htmlFor="listTitle">Name:</label>
           <input type="text" name="listTitle" id="listTitle" />
         </div>
 
-        <div className={styles.radioWrapper}>
+        <div className={styles.radioListWrapper}>
           <p>Colour:</p>
-          <div className="redBackground">
-            <input type="radio" name="color" id="red" value="red" />
-          </div>
+          <ul className={styles.radioList}>
+            <li className="redBackground">
+              <input type="radio" name="color" id="red" value="red" />
+            </li>
 
-          <div className="orangeBackground">
-            <input type="radio" name="color" id="orange" value="orange" />
-          </div>
+            <li className="orangeBackground">
+              <input type="radio" name="color" id="orange" value="orange" />
+            </li>
 
-          <div className="yellowBackground">
-            <input type="radio" name="color" id="yellow" value="yellow" />
-          </div>
+            <li className="yellowBackground">
+              <input type="radio" name="color" id="yellow" value="yellow" />
+            </li>
 
-          <div className="greenBackground">
-            <input type="radio" name="color" id="green" value="green" />
-          </div>
+            <li className="greenBackground">
+              <input type="radio" name="color" id="green" value="green" />
+            </li>
 
-          <div className="blueBackground">
-            <input type="radio" name="color" id="blue" value="blue" />
-          </div>
+            <li className="lightblueBackground">
+              <input
+                type="radio"
+                name="color"
+                id="lightblue"
+                value="lightblue"
+              />
+            </li>
 
-          <div className="purpleBackground">
-            <input type="radio" name="color" id="purple" value="purple" />
-          </div>
+            <li className="blueBackground">
+              <input type="radio" name="color" id="blue" value="blue" />
+            </li>
+
+            <li className="purpleBackground">
+              <input type="radio" name="color" id="purple" value="purple" />
+            </li>
+
+            <li className="coralBackground">
+              <input type="radio" name="color" id="purple" value="coral" />
+            </li>
+
+            <li className="pinkBackground">
+              <input type="radio" name="color" id="purple" value="pink" />
+            </li>
+
+            <li className="brownBackground">
+              <input type="radio" name="color" id="purple" value="brown" />
+            </li>
+
+            <li className="greyBackground">
+              <input type="radio" name="color" id="purple" value="grey" />
+            </li>
+
+            <li className="beigeBackground">
+              <input type="radio" name="color" id="purple" value="beige" />
+            </li>
+          </ul>
         </div>
 
         <div className={styles.formControls}>

@@ -69,7 +69,7 @@ const ManageTask = ({ cancelInput, action, task }: Prop) => {
         ref={inputRef}
         name="newTask"
         onBlur={handleBlur}
-        className={styles.taskText}
+        className={styles.taskTextInput}
         defaultValue={task?.text && task.text}
       />
     </li>

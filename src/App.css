@@ -1,37 +1,88 @@
+:root {
+  --red: #eb5545;
+  --orange: #f2a33c;
+  --yellow: #f8d84a;
+  --green: #68ce69;
+  --blue: #3b82f7;
+  --lightblue: #89c1f9;
+  --purple: #5e5cde;
+  --coral: #ec5d7b;
+  --pink: #c984ef;
+  --brown: #c3a77c;
+  --grey: #747d87;
+  --beige: #e3b7af;
+}
+
 .redBackground {
-  background-color: #eb5545;
+  background-color: var(--red);
 }
 .orangeBackground {
-  background-color: #f2a33c;
+  background-color: var(--orange);
 }
 .yellowBackground {
-  background-color: #f8d84a;
+  background-color: var(--yellow);
 }
 .greenBackground {
-  background-color: #68ce69;
+  background-color: var(--green);
+}
+.lightblueBackground {
+  background-color: var(--lightblue);
 }
 .blueBackground {
-  background-color: #3b82f7;
+  background-color: var(--blue);
 }
 .purpleBackground {
-  background-color: #5e5cde;
+  background-color: var(--purple);
+}
+.coralBackground {
+  background-color: var(--coral);
+}
+.pinkBackground {
+  background-color: var(--pink);
+}
+.brownBackground {
+  background-color: var(--brown);
+}
+.greyBackground {
+  background-color: var(--grey);
+}
+.beigeBackground {
+  background-color: var(--beige);
 }
 
 .redColor {
-  color: #eb5545;
+  color: var(--red);
 }
 .orangeColor {
-  color: #f2a33c;
+  color: var(--orange);
 }
 .yellowColor {
-  color: #f8d84a;
+  color: var(--yellow);
 }
 .greenColor {
-  color: #68ce69;
+  color: var(--green);
+}
+.lightblueColor {
+  color: var(--lightblue);
 }
 .blueColor {
-  color: #3b82f7;
+  color: var(--blue);
 }
 .purpleColor {
-  color: #5e5cde;
+  color: var(--purple);
+}
+.coralColor {
+  color: var(--coral);
+}
+.purpleColor {
+  color: var(--pink);
+}
+.brownColor {
+  color: var(--brown);
+}
+.greyColor {
+  color: var(--grey);
+}
+.beigeColor {
+  color: var(--beige);
 }
