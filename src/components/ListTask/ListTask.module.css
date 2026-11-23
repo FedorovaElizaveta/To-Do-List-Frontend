@@ -35,16 +35,12 @@
   height: 1em;
   border: 1px solid #585958;
   border-radius: 50%;
-  transition: border 0.3s ease;
+  transition: border-color 0.3s ease;
   transform: translateY(-50%);
 }
 
 .checkboxWrapper input:checked + label + p {
   color: #9b9c9c;
-}
-
-.checkboxWrapper input:checked + label::before {
-  border: 1px solid #9b9c9c;
 }
 
 .checkboxWrapper label::after {
@@ -59,10 +55,6 @@
   transform: translate(-50%, -50%);
   background-color: transparent;
   transition: background-color 0.3s ease;
-}
-
-.checkboxWrapper input:checked + label::after {
-  background-color: #9b9c9c;
 }
 
 .dropdown {

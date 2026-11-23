@@ -74,7 +74,7 @@
 .coralColor {
   color: var(--coral);
 }
-.purpleColor {
+.pinkColor {
   color: var(--pink);
 }
 .brownColor {
@@ -85,4 +85,88 @@
 }
 .beigeColor {
   color: var(--beige);
+}
+
+.redTaskStatus:checked + label::before {
+  border-color: var(--red);
+}
+.redTaskStatus:checked + label::after {
+  background-color: var(--red);
+}
+
+.orangeTaskStatus:checked + label::before {
+  border-color: var(--orange);
+}
+.orangeTaskStatus:checked + label::after {
+  background-color: var(--orange);
+}
+
+.yellowTaskStatus:checked + label::before {
+  border-color: var(--yellow);
+}
+.yellowTaskStatus:checked + label::after {
+  background-color: var(--yellow);
+}
+
+.greenTaskStatus:checked + label::before {
+  border-color: var(--green);
+}
+.greenTaskStatus:checked + label::after {
+  background-color: var(--green);
+}
+
+.lightblueTaskStatus:checked + label::before {
+  border-color: var(--lightblue);
+}
+.lightblueTaskStatus:checked + label::after {
+  background-color: var(--lightblue);
+}
+
+.blueTaskStatus:checked + label::before {
+  border-color: var(--blue);
+}
+.blueTaskStatus:checked + label::after {
+  background-color: var(--blue);
+}
+
+.purpleTaskStatus:checked + label::before {
+  border-color: var(--purple);
+}
+.purpleTaskStatus:checked + label::after {
+  background-color: var(--purple);
+}
+
+.coralTaskStatus:checked + label::before {
+  border-color: var(--coral);
+}
+.coralTaskStatus:checked + label::after {
+  background-color: var(--coral);
+}
+
+.pinkTaskStatus:checked + label::before {
+  border-color: var(--pink);
+}
+.pinkTaskStatus:checked + label::after {
+  background-color: var(--pink);
+}
+
+.brownTaskStatus:checked + label::before {
+  border-color: var(--brown);
+}
+.brownTaskStatus:checked + label::after {
+  background-color: var(--brown);
+}
+
+.greyTaskStatus:checked + label::before {
+  border-color: var(--grey);
+}
+.greyTaskStatus:checked + label::after {
+  background-color: var(--grey);
+}
+
+.beigeTaskStatus:checked + label::before {
+  border-color: var(--beige);
+}
+.beigeTaskStatus:checked + label::after {
+  background-color: var(--beige);
 }

@@ -35,16 +35,28 @@ const SelectedList = () => {
           {list.tasks.length !== 0 ? (
             <ul className={styles.taskList}>
               {list.tasks.map((task) => (
-                <ListTask task={task} key={task.id} />
+                <ListTask
+                  task={task}
+                  key={task.id}
+                  themeColor={list.themeColor}
+                />
               ))}
               {isAdding && (
-                <ManageTask cancelInput={closeInput} action="addTask" />
+                <ManageTask
+                  cancelInput={closeInput}
+                  action="addTask"
+                  themeColor={list.themeColor}
+                />
               )}
             </ul>
           ) : (
             <ul>
               {isAdding ? (
-                <ManageTask cancelInput={closeInput} action="addTask" />
+                <ManageTask
+                  cancelInput={closeInput}
+                  action="addTask"
+                  themeColor={list.themeColor}
+                />
               ) : (
                 <li className={styles.noRemindersMsg}>No Reminders</li>
               )}

@@ -20,16 +20,12 @@
   height: 1em;
   border: 1px solid #585958;
   border-radius: 50%;
-  transition: border 0.3s ease;
+  transition: border-color 0.3s ease;
   transform: translateY(-50%);
 }
 
 .taskStatus:checked + label + .taskText {
   color: #9b9c9c;
-}
-
-.taskStatus:checked + label::before {
-  border: 1px solid #9b9c9c;
 }
 
 .taskStatus + label::after {
@@ -44,10 +40,6 @@
   transform: translate(-50%, -50%);
   background-color: transparent;
   transition: background-color 0.3s ease;
-}
-
-.taskStatus:checked + label::after {
-  background-color: #9b9c9c;
 }
 
 .taskTextInput {

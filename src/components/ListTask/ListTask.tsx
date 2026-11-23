@@ -7,9 +7,10 @@ import ManageTask from "../ManageTask/ManageTask.tsx";
 
 interface Props {
   task: Task;
+  themeColor: string;
 }
 
-const ListTask = ({ task }: Props) => {
+const ListTask = ({ task, themeColor }: Props) => {
   const updateTask = useListStore((state) => state.updateTask);
   const deleteTask = useListStore((state) => state.deleteTask);
   const [searchParams] = useSearchParams();
@@ -51,6 +52,7 @@ const ListTask = ({ task }: Props) => {
               id={task.id}
               checked={task.completed}
               onChange={handleChange}
+              className={`${themeColor}TaskStatus`}
             />
             <label htmlFor={task.id}></label>
 
@@ -58,7 +60,12 @@ const ListTask = ({ task }: Props) => {
           </div>
         </li>
       ) : (
-        <ManageTask cancelInput={cancelInput} action="updateTask" task={task} />
+        <ManageTask
+          cancelInput={cancelInput}
+          action="updateTask"
+          task={task}
+          themeColor={themeColor}
+        />
       )}
     </>
   );

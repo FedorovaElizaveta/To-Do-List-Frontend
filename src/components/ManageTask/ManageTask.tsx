@@ -3,14 +3,16 @@ import { useSearchParams } from "react-router-dom";
 import { useRef, useEffect, type FocusEvent } from "react";
 import { useListStore } from "../../zustand/store";
 import type { Task } from "../../types";
+import clsx from "clsx";
 
 interface Prop {
   cancelInput(): void;
   action: "addTask" | "updateTask";
   task?: Task;
+  themeColor: string;
 }
 
-const ManageTask = ({ cancelInput, action, task }: Prop) => {
+const ManageTask = ({ cancelInput, action, task, themeColor }: Prop) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const addTask = useListStore((state) => state.addTask);
   const updateTask = useListStore((state) => state.updateTask);
@@ -58,7 +60,7 @@ const ManageTask = ({ cancelInput, action, task }: Prop) => {
       <input
         type="checkbox"
         id="manageTask"
-        className={styles.taskStatus}
+        className={clsx(styles.taskStatus, `${themeColor}TaskStatus`)}
         checked={task && task.completed}
         readOnly
       />
