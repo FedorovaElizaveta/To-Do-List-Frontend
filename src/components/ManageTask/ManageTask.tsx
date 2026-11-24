@@ -1,18 +1,19 @@
+import "../../App.css";
 import styles from "./ManageTask.module.css";
 import { useSearchParams } from "react-router-dom";
-import { useRef, useEffect, type FocusEvent } from "react";
+import { useRef, useEffect, type FocusEvent, type FC } from "react";
 import { useListStore } from "../../zustand/store";
 import type { Task } from "../../types";
 import clsx from "clsx";
 
-interface Prop {
+interface Props {
   cancelInput(): void;
   action: "addTask" | "updateTask";
   task?: Task;
   themeColor: string;
 }
 
-const ManageTask = ({ cancelInput, action, task, themeColor }: Prop) => {
+const ManageTask: FC<Props> = ({ cancelInput, action, task, themeColor }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const addTask = useListStore((state) => state.addTask);
   const updateTask = useListStore((state) => state.updateTask);
@@ -26,7 +27,7 @@ const ManageTask = ({ cancelInput, action, task, themeColor }: Prop) => {
     }
   }, []);
 
-  function handleBlur(event: FocusEvent<HTMLInputElement>) {
+  const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
     const userInput = event.target.value;
 
     if (!listId) throw new Error("List ID is not provided");
@@ -53,7 +54,7 @@ const ManageTask = ({ cancelInput, action, task, themeColor }: Prop) => {
     }
 
     cancelInput();
-  }
+  };
 
   return (
     <li className={styles.manageTaskLi}>

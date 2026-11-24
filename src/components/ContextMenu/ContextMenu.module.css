@@ -1,5 +1,27 @@
 .contextMenu {
   position: absolute;
   z-index: 20;
-  background-color: royalblue;
+  background-color: #141414;
+  border: 1px solid #5c5c5c;
+  border-radius: 15px;
+  min-width: 150px;
+  padding: 5px;
+}
+
+.contextMenu button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
+
+  color: #e4e4e4;
+  background-color: transparent;
+  border-radius: 10px;
+
+  transition: background-color 0.3s ease;
+}
+
+.contextMenu button:hover {
+  background-color: #2f62b3;
 }

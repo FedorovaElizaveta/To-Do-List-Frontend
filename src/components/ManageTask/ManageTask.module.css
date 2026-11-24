@@ -3,6 +3,7 @@
   align-items: center;
   position: relative;
   height: 35px;
+  padding: 5px 10px;
 }
 
 .taskStatus {
@@ -14,7 +15,7 @@
 .taskStatus + label::before {
   content: "";
   position: absolute;
-  left: 0;
+  left: 10px;
   top: 50%;
   width: 1em;
   height: 1em;
@@ -32,7 +33,7 @@
   content: "";
   position: absolute;
   top: 50%;
-  left: calc(0.5em + 1px);
+  left: calc(0.5em + 11px);
   width: 0.75em;
   height: 0.75em;
   background-color: #9b9c9c;

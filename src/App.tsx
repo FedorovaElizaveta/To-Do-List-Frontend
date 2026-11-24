@@ -4,7 +4,7 @@ import { useListStore } from "./zustand/store.ts";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage.tsx"));
 
-function App() {
+const App = () => {
   const getLists = useListStore((state) => state.getLists);
 
   useEffect(() => {
@@ -18,6 +18,6 @@ function App() {
       </Routes>
     </Suspense>
   );
-}
+};
 
 export default App;

@@ -1,7 +1,7 @@
 import styles from "./TaskModalWindow.module.css";
 import { useListStore } from "../../zustand/store.ts";
 import { useSearchParams } from "react-router-dom";
-import { type SubmitEvent } from "react";
+import { type FC, type SubmitEvent } from "react";
 
 interface Props {
   cancelFn(): void;
@@ -10,8 +10,7 @@ interface Props {
   taskText?: string;
 }
 
-const TaskModal: React.FC<Props> = (props) => {
-  const { cancelFn, action, taskId, taskText } = props;
+const TaskModal: FC<Props> = ({ cancelFn, action, taskId, taskText }) => {
   const updateTask = useListStore((state) => state.updateTask);
   const [searchParams] = useSearchParams();
   const listId = searchParams.get("listId");

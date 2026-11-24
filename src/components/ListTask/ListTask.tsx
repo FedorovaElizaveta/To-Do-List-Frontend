@@ -1,21 +1,23 @@
+import "../../App.css";
 import styles from "./ListTask.module.css";
 import type { Task } from "../../types";
 import { useListStore } from "../../zustand/store";
 import { useSearchParams } from "react-router-dom";
-import { useState, type ChangeEvent, type MouseEvent } from "react";
+import { useState, type ChangeEvent, type FC, type MouseEvent } from "react";
 import ManageTask from "../ManageTask/ManageTask.tsx";
 import ContextMenu from "../ContextMenu/ContextMenu.tsx";
+import clsx from "clsx";
 
 interface Props {
   task: Task;
   themeColor: string;
 }
 
-const ListTask = ({ task, themeColor }: Props) => {
+const ListTask: FC<Props> = ({ task, themeColor }) => {
   const updateTask = useListStore((state) => state.updateTask);
-  // const deleteTask = useListStore((state) => state.deleteTask);
   const [searchParams] = useSearchParams();
   const listId = searchParams.get("listId");
+  const [focus, setFocus] = useState(false);
 
   const initialContextMenu = {
     show: false,
@@ -35,29 +37,29 @@ const ListTask = ({ task, themeColor }: Props) => {
 
   const [isAdding, setIsAdding] = useState(false);
 
-  function openInput() {
+  const openInput = () => {
     setIsAdding(true);
-  }
+  };
 
-  function cancelInput() {
+  const cancelInput = () => {
     setIsAdding(false);
-  }
+  };
 
-  function handleContextMenu(event: MouseEvent<HTMLElement>) {
+  const handleContextMenu = (event: MouseEvent<HTMLElement>) => {
     event.preventDefault();
+    setFocus(true);
 
     const { pageX, pageY } = event;
     setContextMenu({ show: true, x: pageX, y: pageY });
-
-    // if (!listId) throw new Error("List ID is not provided");
-
-    // deleteTask(task.id, listId);
-  }
+  };
 
   return (
     <>
       {!isAdding ? (
-        <li className={styles.task} onContextMenu={handleContextMenu}>
+        <li
+          className={clsx(styles.task, focus && styles.taskFocus)}
+          onContextMenu={handleContextMenu}
+        >
           <div className={styles.checkboxWrapper}>
             <input
               type="checkbox"
@@ -80,7 +82,14 @@ const ListTask = ({ task, themeColor }: Props) => {
         />
       )}
 
-      {contextMenu.show && <ContextMenu x={contextMenu.x} y={contextMenu.y} />}
+      {contextMenu.show && (
+        <ContextMenu
+          x={contextMenu.x}
+          y={contextMenu.y}
+          taskId={task.id}
+          listId={listId}
+        />
+      )}
     </>
   );
 };

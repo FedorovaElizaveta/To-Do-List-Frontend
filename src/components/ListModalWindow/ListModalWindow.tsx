@@ -2,7 +2,7 @@ import "../../App.css";
 import styles from "./ListModalWindow.module.css";
 import { useListStore } from "../../zustand/store.ts";
 import { useSearchParams } from "react-router-dom";
-import type { SubmitEvent } from "react";
+import type { FC, SubmitEvent } from "react";
 
 interface Props {
   cancelFn(): void;
@@ -10,8 +10,7 @@ interface Props {
   action: "addList" | "updateList";
 }
 
-const ListModalWindow: React.FC<Props> = (props) => {
-  const { cancelFn, listName, action } = props;
+const ListModalWindow: FC<Props> = ({ cancelFn, listName, action }) => {
   const createList = useListStore((state) => state.createList);
   const updateList = useListStore((state) => state.updateList);
   const [searchParams] = useSearchParams();

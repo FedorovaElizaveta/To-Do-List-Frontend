@@ -4,7 +4,7 @@ import listImg from "../../images/list.png";
 import type { List } from "../../types";
 import clsx from "clsx";
 import { useListStore } from "../../zustand/store.ts";
-import { useState } from "react";
+import { useState, type FC } from "react";
 import infoIcon from "../../images/info-icon.png";
 import pencilIcon from "../../images/pencil-icon.png";
 import deletelIcon from "../../images/delete-icon.png";
@@ -16,7 +16,7 @@ interface Props {
   list: List;
 }
 
-const ListInfo = ({ list }: Props) => {
+const ListInfo: FC<Props> = ({ list }) => {
   const deleteList = useListStore((state) => state.deleteList);
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -67,7 +67,7 @@ const ListInfo = ({ list }: Props) => {
               <p>Rename</p>
             </button>
             <button type="button" onClick={() => deleteList(list.id)}>
-              <img src={deletelIcon} alt="delete list" width={13} />
+              <img src={deletelIcon} alt="delete list" width={15} />
               <p>Delete</p>
             </button>
           </div>

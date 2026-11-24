@@ -1,16 +1,14 @@
 import clsx from "clsx";
 import styles from "./Modal.module.css";
-import React, { useEffect } from "react";
+import { useEffect, type FC, type ReactNode } from "react";
 
 interface Props {
   isOpen: boolean;
   cancelFn(): void;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-const Modal: React.FC<Props> = (props) => {
-  const { isOpen, cancelFn, children } = props;
-
+const Modal: FC<Props> = ({ isOpen, cancelFn, children }) => {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape" && isOpen) {

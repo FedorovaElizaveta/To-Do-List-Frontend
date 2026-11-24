@@ -1,3 +1,4 @@
+import "../../App.css";
 import styles from "./SelectedList.module.css";
 import { useListStore } from "../../zustand/store.ts";
 import clsx from "clsx";
@@ -14,9 +15,9 @@ const SelectedList = () => {
   const list = lists.find((list) => list.id === listId);
   const [isAdding, setIsAdding] = useState(false);
 
-  function closeInput() {
+  const closeInput = () => {
     setIsAdding(false);
-  }
+  };
 
   return (
     <div className={styles.listWrapper}>
