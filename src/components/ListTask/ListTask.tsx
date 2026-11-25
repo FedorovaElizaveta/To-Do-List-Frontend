@@ -17,6 +17,7 @@ const ListTask: FC<Props> = ({ task, themeColor }) => {
   const updateTask = useListStore((state) => state.updateTask);
   const [searchParams] = useSearchParams();
   const listId = searchParams.get("listId");
+  const [isAdding, setIsAdding] = useState(false);
   const [focus, setFocus] = useState(false);
 
   const initialContextMenu = {
@@ -35,8 +36,6 @@ const ListTask: FC<Props> = ({ task, themeColor }) => {
     updateTask(task.id, listId, { completed: !task.completed });
   };
 
-  const [isAdding, setIsAdding] = useState(false);
-
   const openInput = () => {
     setIsAdding(true);
   };
@@ -51,6 +50,11 @@ const ListTask: FC<Props> = ({ task, themeColor }) => {
 
     const { pageX, pageY } = event;
     setContextMenu({ show: true, x: pageX, y: pageY });
+  };
+
+  const contextMenuClose = () => {
+    setFocus(false);
+    setContextMenu(initialContextMenu);
   };
 
   return (
@@ -86,6 +90,7 @@ const ListTask: FC<Props> = ({ task, themeColor }) => {
         <ContextMenu
           x={contextMenu.x}
           y={contextMenu.y}
+          closeContextMenu={contextMenuClose}
           taskId={task.id}
           listId={listId}
         />

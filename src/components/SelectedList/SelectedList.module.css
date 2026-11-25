@@ -1,8 +1,7 @@
 .listWrapper {
   display: grid;
-  grid-template-rows: 73px auto;
+  grid-template-rows: 100px auto;
   position: relative;
-  padding: 20px 15px 20px 15px;
   overflow: auto;
 }
 
@@ -27,6 +26,7 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 30px;
+  padding: 15px 20px 0 20px;
 }
 
 .noRemindersMsg {

@@ -2,14 +2,13 @@
   display: flex;
   gap: 20px;
   min-height: 35px;
-  padding: 5px 10px;
+  padding: 5px 20px;
 }
 
 .taskFocus {
   box-shadow:
-    #2458ca 0px 1px 1px,
-    #2458ca 0px 0px 0px 1px;
-  border-radius: 15px;
+    inset #2458ca 0px 1px 1px,
+    inset #2458ca 0px 0px 0px 1px;
 }
 
 .checkboxWrapper {

@@ -1,7 +1,7 @@
 import "../../App.css";
 import styles from "./ManageTask.module.css";
 import { useSearchParams } from "react-router-dom";
-import { useRef, useEffect, type FocusEvent, type FC } from "react";
+import { useRef, type FocusEvent, type FC, useEffect } from "react";
 import { useListStore } from "../../zustand/store";
 import type { Task } from "../../types";
 import clsx from "clsx";
@@ -14,7 +14,7 @@ interface Props {
 }
 
 const ManageTask: FC<Props> = ({ cancelInput, action, task, themeColor }) => {
-  const inputRef = useRef<HTMLInputElement>(null);
+  const textInputRef = useRef<HTMLInputElement>(null);
   const addTask = useListStore((state) => state.addTask);
   const updateTask = useListStore((state) => state.updateTask);
   const deleteTask = useListStore((state) => state.deleteTask);
@@ -22,8 +22,8 @@ const ManageTask: FC<Props> = ({ cancelInput, action, task, themeColor }) => {
   const listId = searchParams.get("listId");
 
   useEffect((): void => {
-    if (inputRef.current) {
-      inputRef.current.focus();
+    if (textInputRef.current) {
+      textInputRef.current.focus();
     }
   }, []);
 
@@ -68,8 +68,8 @@ const ManageTask: FC<Props> = ({ cancelInput, action, task, themeColor }) => {
       <label htmlFor="manageTask"></label>
 
       <input
+        ref={textInputRef}
         type="text"
-        ref={inputRef}
         name="newTask"
         onBlur={handleBlur}
         className={styles.taskTextInput}
