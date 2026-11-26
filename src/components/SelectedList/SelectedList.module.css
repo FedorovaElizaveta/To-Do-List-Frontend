@@ -5,6 +5,10 @@
   overflow: auto;
 }
 
+.listWrapper ul {
+  padding-top: 10px;
+}
+
 .title {
   font-size: 35px;
   font-weight: 600;
@@ -57,6 +61,7 @@
   color: #555555;
   font-size: 25px;
   text-align: center;
+  padding: 20px;
 }
 
 .addTaskBtn {

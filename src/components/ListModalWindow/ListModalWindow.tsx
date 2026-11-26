@@ -75,18 +75,22 @@ const ListModalWindow: FC<Props> = ({ cancelFn, listName, action }) => {
           <ul className={styles.radioList}>
             <li className="redBackground">
               <input type="radio" name="color" id="red" value="red" />
+              <label htmlFor="red" />
             </li>
 
             <li className="orangeBackground">
               <input type="radio" name="color" id="orange" value="orange" />
+              <label htmlFor="orange" />
             </li>
 
             <li className="yellowBackground">
               <input type="radio" name="color" id="yellow" value="yellow" />
+              <label htmlFor="yellow" />
             </li>
 
             <li className="greenBackground">
               <input type="radio" name="color" id="green" value="green" />
+              <label htmlFor="green" />
             </li>
 
             <li className="lightblueBackground">
@@ -96,34 +100,42 @@ const ListModalWindow: FC<Props> = ({ cancelFn, listName, action }) => {
                 id="lightblue"
                 value="lightblue"
               />
+              <label htmlFor="lightblue" />
             </li>
 
             <li className="blueBackground">
               <input type="radio" name="color" id="blue" value="blue" />
+              <label htmlFor="blue" />
             </li>
 
             <li className="purpleBackground">
               <input type="radio" name="color" id="purple" value="purple" />
+              <label htmlFor="purple" />
             </li>
 
             <li className="coralBackground">
-              <input type="radio" name="color" id="purple" value="coral" />
+              <input type="radio" name="color" id="coral" value="coral" />
+              <label htmlFor="coral" />
             </li>
 
             <li className="pinkBackground">
-              <input type="radio" name="color" id="purple" value="pink" />
+              <input type="radio" name="color" id="pink" value="pink" />
+              <label htmlFor="pink" />
             </li>
 
             <li className="brownBackground">
-              <input type="radio" name="color" id="purple" value="brown" />
+              <input type="radio" name="color" id="brown" value="brown" />
+              <label htmlFor="brown" />
             </li>
 
             <li className="greyBackground">
-              <input type="radio" name="color" id="purple" value="grey" />
+              <input type="radio" name="color" id="grey" value="grey" />
+              <label htmlFor="grey" />
             </li>
 
             <li className="beigeBackground">
-              <input type="radio" name="color" id="purple" value="beige" />
+              <input type="radio" name="color" id="beige" value="beige" />
+              <label htmlFor="beige" />
             </li>
           </ul>
         </div>
