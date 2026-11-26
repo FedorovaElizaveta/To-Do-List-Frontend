@@ -13,6 +13,7 @@ const SelectedList = () => {
   const [searchParams] = useSearchParams();
   const listId = searchParams.get("listId");
   const list = lists.find((list) => list.id === listId);
+  const completed = list?.tasks.filter((task) => task.completed);
   const [isAdding, setIsAdding] = useState(false);
 
   const closeInput = () => {
@@ -23,13 +24,21 @@ const SelectedList = () => {
     <div className={styles.listWrapper}>
       {list ? (
         <>
-          <div className={styles.titleNTotalWrapper}>
-            <h1 className={clsx(styles.listTitle, `${[list.themeColor]}Color`)}>
-              {list.title}
-            </h1>
-            <p className={clsx(styles.taskTotal, `${[list.themeColor]}Color`)}>
-              {list.tasks.length}
-            </p>
+          <div className={styles.listInfoWrapper}>
+            <div className={styles.titleNTotalWrapper}>
+              <h1 className={clsx(styles.title, `${[list.themeColor]}Color`)}>
+                {list.title}
+              </h1>
+              <p
+                className={clsx(styles.taskTotal, `${[list.themeColor]}Color`)}
+              >
+                {list.tasks.length}
+              </p>
+            </div>
+            <div className={styles.completedNum}>
+              <p>{completed?.length}</p>
+              <p>Completed</p>
+            </div>
           </div>
           {list.tasks.length !== 0 ? (
             <ul>
@@ -73,7 +82,9 @@ const SelectedList = () => {
           </button>
         </>
       ) : (
-        <p className={styles.listTitle}>Select List</p>
+        <h1 className={clsx(styles.title, styles.selectListTitle)}>
+          Select List
+        </h1>
       )}
     </div>
   );

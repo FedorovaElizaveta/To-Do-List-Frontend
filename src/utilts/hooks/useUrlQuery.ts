@@ -10,6 +10,6 @@ export const useSetQuery = <T extends NavigateOptions>(
   queryName: string,
   value: T,
 ) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [, setSearchParams] = useSearchParams();
   setSearchParams(queryName, value);
 };

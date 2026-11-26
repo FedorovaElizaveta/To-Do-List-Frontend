@@ -5,7 +5,7 @@
   overflow: auto;
 }
 
-.listTitle {
+.title {
   font-size: 35px;
   font-weight: 600;
   max-width: 550px;
@@ -21,12 +21,36 @@
   text-overflow: ellipsis;
 }
 
+.listInfoWrapper {
+  position: relative;
+  padding: 15px 20px 0 20px;
+}
+
+.listInfoWrapper::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  height: 1px;
+  width: calc(100% - 40px);
+  background-color: #555555;
+}
+
 .titleNTotalWrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 30px;
-  padding: 15px 20px 0 20px;
+  margin-bottom: 15px;
+}
+
+.selectListTitle {
+  padding: 15px 20px;
+}
+
+.completedNum {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #9f9f9f;
 }
 
 .noRemindersMsg {
