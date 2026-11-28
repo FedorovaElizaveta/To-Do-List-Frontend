@@ -1,7 +1,13 @@
 import "../../App.css";
 import styles from "./ManageTask.module.css";
 import { useSearchParams } from "react-router-dom";
-import { useRef, type FocusEvent, type FC, useEffect } from "react";
+import {
+  useRef,
+  useEffect,
+  type FocusEvent,
+  type FC,
+  type KeyboardEvent,
+} from "react";
 import { useListStore } from "../../zustand/store";
 import type { Task } from "../../types";
 import clsx from "clsx";
@@ -27,8 +33,10 @@ const ManageTask: FC<Props> = ({ cancelInput, action, task, themeColor }) => {
     }
   }, []);
 
-  const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
-    const userInput = event.target.value;
+  const manageTask = (
+    event: FocusEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
+  ) => {
+    const userInput = event.currentTarget.value;
 
     if (!listId) throw new Error("List ID is not provided");
 
@@ -71,7 +79,10 @@ const ManageTask: FC<Props> = ({ cancelInput, action, task, themeColor }) => {
         ref={textInputRef}
         type="text"
         name="newTask"
-        onBlur={handleBlur}
+        onBlur={manageTask}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") manageTask(e);
+        }}
         className={styles.taskTextInput}
         defaultValue={task?.text && task.text}
       />
